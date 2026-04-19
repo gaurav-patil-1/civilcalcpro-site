@@ -245,6 +245,9 @@ img { max-width: 100%; display: block; }
   gap: 24px;
   padding: 44px 0 56px;
 }
+.policy-layout > article {
+  min-width: 0;
+}
 .toc {
   position: sticky;
   top: 92px;
