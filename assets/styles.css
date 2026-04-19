@@ -421,7 +421,8 @@ th {
   .toc {
     padding: 20px;
   }
-  .nav { align-items: flex-start; padding: 12px 0; }
+  .nav { align-items: flex-start; padding: 12px 0; flex-wrap: wrap; }
+  .brand { flex: 0 0 100%; }
   .nav-links { justify-content: flex-start; }
   .hero { padding-top: 42px; }
 }
