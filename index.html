@@ -60,7 +60,16 @@
         "@id": "https://civilcalcpro.com/#website",
         "url": "https://civilcalcpro.com/",
         "name": "CivilCalc Pro",
-        "alternateName": ["Civil Calc Pro", "CivilCalc"]
+        "alternateName": ["Civil Calc Pro", "CivilCalc"],
+        "publisher": { "@id": "https://civilcalcpro.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://civilcalcpro.com/#webpage",
+        "url": "https://civilcalcpro.com/",
+        "name": "CivilCalc Pro",
+        "isPartOf": { "@id": "https://civilcalcpro.com/#website" },
+        "about": { "@id": "https://civilcalcpro.com/#organization" }
       },
       {
         "@type": "Organization",
@@ -138,7 +147,7 @@
           <span class="eyebrow">Built for the field</span>
           <h1>
             <span class="hl">Estimate concrete, steel, and finishes</span>
-            <span class="accent">in seconds.</span>
+            <span class="accent">in seconds with CivilCalc Pro.</span>
           </h1>
           <p class="lead">
             CivilCalc Pro is a focused construction estimation app for Android. Fifty&#43; calculators for quantity, RCC, area, volume, and unit conversion &mdash; all running on&#8209;device, with optional Google Drive backup and clean PDF or CSV exports.
