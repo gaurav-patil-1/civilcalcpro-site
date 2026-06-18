@@ -2,6 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script>
+    /* No-FOUC theme bootstrap. Sets data-theme on <html> before paint. */
+    (function () {
+      var d = document.documentElement;
+      try {
+        var t = localStorage.getItem('ccp_theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        d.dataset.theme = t;
+      } catch (e) {
+        d.dataset.theme = 'dark';
+      }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CivilCalc Pro - Civil Engineering &amp; Construction Calculator App</title>
   <meta name="description" content="CivilCalc Pro is a fast, on-device construction estimation app for Android. 50+ calculators for concrete, steel, RCC, masonry, plaster, paint, tiles, formwork and more, with optional Google Drive backup, PDF and CSV export, and Google Play billing.">
@@ -105,6 +120,12 @@
         <a href="/privacy/">Privacy Policy</a>
         <a href="/terms/">Terms of Service</a>
       </nav>
+      <div class="nav-right">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to light theme" title="Toggle theme">
+          <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -125,25 +146,37 @@
 
           <div class="hero-actions">
             <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro" rel="noopener noreferrer" aria-label="Get CivilCalc Pro on Google Play">
-              <svg viewBox="0 0 512 512" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
                 <defs>
-                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#00C3FF"/><stop offset="1" stop-color="#1A73E8"/>
+                  <linearGradient id="pb-b" x1="2.6" y1="2.4" x2="11.6" y2="11.4" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#00A1FF"/>
+                    <stop offset=".26" stop-color="#00BEFF"/>
+                    <stop offset=".51" stop-color="#00D2FF"/>
+                    <stop offset=".76" stop-color="#00DFFF"/>
+                    <stop offset="1" stop-color="#00E3FF"/>
                   </linearGradient>
-                  <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#FFE000"/><stop offset="1" stop-color="#FFA800"/>
+                  <linearGradient id="pb-y" x1="20.7" y1="12" x2="3.05" y2="12" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#FFE000"/>
+                    <stop offset=".41" stop-color="#FFBD00"/>
+                    <stop offset=".78" stop-color="#FFA500"/>
+                    <stop offset="1" stop-color="#FF9C00"/>
                   </linearGradient>
-                  <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#FF3A44"/><stop offset="1" stop-color="#C31162"/>
+                  <linearGradient id="pb-r" x1="15.6" y1="13.7" x2="3.85" y2="25.4" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#FF3A44"/>
+                    <stop offset="1" stop-color="#C31162"/>
                   </linearGradient>
-                  <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#00F076"/><stop offset="1" stop-color="#00B254"/>
+                  <linearGradient id="pb-g" x1="3.05" y1="-1.4" x2="8.4" y2="3.95" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#32A071"/>
+                    <stop offset=".07" stop-color="#2DA771"/>
+                    <stop offset=".48" stop-color="#15CF74"/>
+                    <stop offset=".8" stop-color="#06E775"/>
+                    <stop offset="1" stop-color="#00F076"/>
                   </linearGradient>
                 </defs>
-                <path fill="url(#g1)" d="M73 53c-7 4-11 12-11 22v362c0 10 4 18 11 22l205-203L73 53z"/>
-                <path fill="url(#g4)" d="M345 256l-67-67L73 53c5-3 12-3 19 1l277 159-24 43z"/>
-                <path fill="url(#g3)" d="M345 256l24 43L92 458c-7 4-14 4-19 1l205-203 67 0z"/>
-                <path fill="url(#g2)" d="M442 213c20 12 20 30 0 42L369 299l-24-43 24-43 73 0z"/>
+                <path fill="url(#pb-b)" d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.06.06L12.78 12l.05-.06z"/>
+                <path fill="url(#pb-y)" d="m15.9 15.07-3.12-3.13v-.08l3.12-3.12.07.04 3.7 2.1c1.06.6 1.06 1.58 0 2.18l-3.7 2.1z"/>
+                <path fill="url(#pb-r)" d="M15.97 15.03 12.78 12 3.6 21.18c.35.37.93.42 1.59.05l10.78-6.13z"/>
+                <path fill="url(#pb-g)" d="m15.97 8.97-10.78-6.13c-.66-.38-1.24-.33-1.59.04L12.78 12z"/>
               </svg>
               <span class="pb-text">
                 <span class="pb-small">Get it on</span>
@@ -172,29 +205,38 @@
 
         <div class="hero-visual" aria-label="App screenshots">
           <div class="app-shots" id="app-shots" aria-roledescription="carousel">
-            <div class="shot is-active" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro – Calculators home">
-              <img src="/public/images/screenshots/Device.png" alt="CivilCalc Pro calculators home screen showing Quick Estimate and quick-access calculators" loading="eager" fetchpriority="high">
-            </div>
-            <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-              <img src="/public/images/screenshots/Device_2.png" alt="CivilCalc Pro app screen" loading="lazy">
-            </div>
-            <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro RCC calculators" aria-hidden="true">
-              <img src="/public/images/screenshots/Device_3.png" alt="CivilCalc Pro RCC calculators screen" loading="lazy">
-            </div>
-            <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-              <img src="/public/images/screenshots/Device_4.png" alt="CivilCalc Pro app screen" loading="lazy">
-            </div>
-            <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-              <img src="/public/images/screenshots/Device_5.png" alt="CivilCalc Pro app screen" loading="lazy">
-            </div>
-            <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-              <img src="/public/images/screenshots/Device_6.png" alt="CivilCalc Pro app screen" loading="lazy">
-            </div>
-            <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-              <img src="/public/images/screenshots/Device_7.png" alt="CivilCalc Pro app screen" loading="lazy">
-            </div>
-            <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-              <img src="/public/images/screenshots/Device_8.png" alt="CivilCalc Pro app screen" loading="lazy">
+            <button type="button" class="shot-arrow shot-prev" aria-label="Previous screenshot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button type="button" class="shot-arrow shot-next" aria-label="Next screenshot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <div class="shot-stage" id="shot-stage">
+              <div class="shot is-active" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro – Calculators home">
+                <img src="/public/images/screenshots/Dark/Device.png" data-name="Device.png" alt="CivilCalc Pro calculators home screen showing Quick Estimate and quick-access calculators" loading="eager" fetchpriority="high" draggable="false">
+              </div>
+              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
+                <img src="/public/images/screenshots/Dark/Device_2.png" data-name="Device_2.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
+              </div>
+              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro RCC calculators" aria-hidden="true">
+                <img src="/public/images/screenshots/Dark/Device_3.png" data-name="Device_3.png" alt="CivilCalc Pro RCC calculators screen" loading="lazy" draggable="false">
+              </div>
+              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
+                <img src="/public/images/screenshots/Dark/Device_4.png" data-name="Device_4.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
+              </div>
+              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
+                <img src="/public/images/screenshots/Dark/Device_5.png" data-name="Device_5.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
+              </div>
+              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
+                <img src="/public/images/screenshots/Dark/Device_6.png" data-name="Device_6.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
+              </div>
+              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
+                <img src="/public/images/screenshots/Dark/Device_7.png" data-name="Device_7.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
+              </div>
+              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
+                <img src="/public/images/screenshots/Dark/Device_8.png" data-name="Device_8.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
+              </div>
             </div>
 
             <div class="shot-dots" id="shot-dots" role="tablist" aria-label="Select screenshot">
@@ -590,17 +632,25 @@
           </div>
           <div class="actions">
             <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro" rel="noopener noreferrer" aria-label="Get CivilCalc Pro on Google Play">
-              <svg viewBox="0 0 512 512" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
                 <defs>
-                  <linearGradient id="cg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00C3FF"/><stop offset="1" stop-color="#1A73E8"/></linearGradient>
-                  <linearGradient id="cg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE000"/><stop offset="1" stop-color="#FFA800"/></linearGradient>
-                  <linearGradient id="cg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF3A44"/><stop offset="1" stop-color="#C31162"/></linearGradient>
-                  <linearGradient id="cg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00F076"/><stop offset="1" stop-color="#00B254"/></linearGradient>
+                  <linearGradient id="pbc-b" x1="2.6" y1="2.4" x2="11.6" y2="11.4" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#00A1FF"/><stop offset=".26" stop-color="#00BEFF"/><stop offset=".51" stop-color="#00D2FF"/><stop offset=".76" stop-color="#00DFFF"/><stop offset="1" stop-color="#00E3FF"/>
+                  </linearGradient>
+                  <linearGradient id="pbc-y" x1="20.7" y1="12" x2="3.05" y2="12" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#FFE000"/><stop offset=".41" stop-color="#FFBD00"/><stop offset=".78" stop-color="#FFA500"/><stop offset="1" stop-color="#FF9C00"/>
+                  </linearGradient>
+                  <linearGradient id="pbc-r" x1="15.6" y1="13.7" x2="3.85" y2="25.4" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#FF3A44"/><stop offset="1" stop-color="#C31162"/>
+                  </linearGradient>
+                  <linearGradient id="pbc-g" x1="3.05" y1="-1.4" x2="8.4" y2="3.95" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#32A071"/><stop offset=".07" stop-color="#2DA771"/><stop offset=".48" stop-color="#15CF74"/><stop offset=".8" stop-color="#06E775"/><stop offset="1" stop-color="#00F076"/>
+                  </linearGradient>
                 </defs>
-                <path fill="url(#cg1)" d="M73 53c-7 4-11 12-11 22v362c0 10 4 18 11 22l205-203L73 53z"/>
-                <path fill="url(#cg4)" d="M345 256l-67-67L73 53c5-3 12-3 19 1l277 159-24 43z"/>
-                <path fill="url(#cg3)" d="M345 256l24 43L92 458c-7 4-14 4-19 1l205-203 67 0z"/>
-                <path fill="url(#cg2)" d="M442 213c20 12 20 30 0 42L369 299l-24-43 24-43 73 0z"/>
+                <path fill="url(#pbc-b)" d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.06.06L12.78 12l.05-.06z"/>
+                <path fill="url(#pbc-y)" d="m15.9 15.07-3.12-3.13v-.08l3.12-3.12.07.04 3.7 2.1c1.06.6 1.06 1.58 0 2.18l-3.7 2.1z"/>
+                <path fill="url(#pbc-r)" d="M15.97 15.03 12.78 12 3.6 21.18c.35.37.93.42 1.59.05l10.78-6.13z"/>
+                <path fill="url(#pbc-g)" d="m15.97 8.97-10.78-6.13c-.66-.38-1.24-.33-1.59.04L12.78 12z"/>
               </svg>
               <span class="pb-text">
                 <span class="pb-small">Get it on</span>
@@ -665,8 +715,35 @@
       if (el) el.textContent = new Date().getFullYear();
     })();
 
-    // Hero app-screenshot slideshow: auto-advances, pauses on hover/focus,
-    // respects prefers-reduced-motion, and supports click + arrow keys.
+    // Site-wide theme controller: toggle persists, swaps screenshots,
+    // updates meta theme-color, keeps the toggle button aria-label honest.
+    (function () {
+      function apply(theme) {
+        var d = document.documentElement;
+        d.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'light' ? '#fafbfc' : '#07080a');
+        document.querySelectorAll('[data-theme-toggle]').forEach(function (b) {
+          b.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+        });
+        var folder = theme === 'light' ? 'Light' : 'Dark';
+        document.querySelectorAll('img[data-name]').forEach(function (img) {
+          img.src = '/public/images/screenshots/' + folder + '/' + img.dataset.name;
+        });
+        try { localStorage.setItem('ccp_theme', theme); } catch (_) {}
+      }
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-theme-toggle]');
+        if (!btn) return;
+        apply(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
+      });
+      // Initial sync (FOUC script set the theme; ensure screenshots + meta agree).
+      apply(document.documentElement.dataset.theme || 'dark');
+    })();
+
+    // Hero app-screenshot slideshow: auto-advance, click arrows, dots,
+    // swipe gestures on touch devices, and keyboard nav. Theme/folder is
+    // handled by the site-wide controller above.
     (function () {
       var root = document.getElementById('app-shots');
       var dotsWrap = document.getElementById('shot-dots');
@@ -674,29 +751,32 @@
 
       var shots = root.querySelectorAll('.shot');
       var dots  = dotsWrap.querySelectorAll('button');
+      var prevBtn = root.querySelector('.shot-prev');
+      var nextBtn = root.querySelector('.shot-next');
       if (!shots.length || !dots.length) return;
 
       var index = 0;
       var timer = null;
-      var INTERVAL = 4200;
+      var INTERVAL = 4500;
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      function show(next) {
-        if (next === index) return;
+      function show(n) {
+        n = (n + shots.length) % shots.length;
+        if (n === index) return;
         shots[index].classList.remove('is-active');
         shots[index].setAttribute('aria-hidden', 'true');
         dots[index].classList.remove('is-active');
         dots[index].setAttribute('aria-selected', 'false');
 
-        index = (next + shots.length) % shots.length;
+        index = n;
 
         shots[index].classList.add('is-active');
         shots[index].removeAttribute('aria-hidden');
         dots[index].classList.add('is-active');
         dots[index].setAttribute('aria-selected', 'true');
       }
-
       function next() { show(index + 1); }
+      function prev() { show(index - 1); }
 
       function start() {
         if (reduce || timer) return;
@@ -707,13 +787,16 @@
         window.clearInterval(timer);
         timer = null;
       }
+      function bump() { stop(); start(); }
 
       dots.forEach(function (btn) {
         btn.addEventListener('click', function () {
           var i = parseInt(btn.getAttribute('data-i'), 10);
-          if (!isNaN(i)) { show(i); stop(); start(); }
+          if (!isNaN(i)) { show(i); bump(); }
         });
       });
+      if (prevBtn) prevBtn.addEventListener('click', function () { prev(); bump(); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { next(); bump(); });
 
       root.addEventListener('mouseenter', stop);
       root.addEventListener('mouseleave', start);
@@ -721,9 +804,76 @@
       root.addEventListener('focusout', start);
 
       dotsWrap.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowRight') { show(index + 1); stop(); start(); e.preventDefault(); }
-        else if (e.key === 'ArrowLeft') { show(index - 1); stop(); start(); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { next(); bump(); e.preventDefault(); }
+        else if (e.key === 'ArrowLeft') { prev(); bump(); e.preventDefault(); }
       });
+
+      // Swipe / pointer-drag support (works for touch + mouse).
+      var stage = document.getElementById('shot-stage') || root;
+      var dragging = false;
+      var startX = 0, startY = 0, deltaX = 0;
+      var lockedAxis = null; // 'x' | 'y' | null
+      var SWIPE_THRESHOLD = 40;
+
+      function onPointerDown(e) {
+        if (e.target.closest('.shot-arrow, .shot-dots')) return;
+        dragging = true;
+        lockedAxis = null;
+        deltaX = 0;
+        startX = e.clientX;
+        startY = e.clientY;
+        stage.classList.add('is-dragging');
+        if (e.pointerId !== undefined && stage.setPointerCapture) {
+          try { stage.setPointerCapture(e.pointerId); } catch (_) {}
+        }
+        stop();
+      }
+      function onPointerMove(e) {
+        if (!dragging) return;
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        if (lockedAxis === null) {
+          if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
+            lockedAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+          }
+        }
+        if (lockedAxis === 'x') {
+          deltaX = dx;
+          if (e.preventDefault) e.preventDefault();
+        }
+      }
+      function onPointerUp() {
+        if (!dragging) return;
+        dragging = false;
+        stage.classList.remove('is-dragging');
+        if (lockedAxis === 'x') {
+          if (deltaX <= -SWIPE_THRESHOLD) next();
+          else if (deltaX >= SWIPE_THRESHOLD) prev();
+        }
+        deltaX = 0;
+        lockedAxis = null;
+        start();
+      }
+
+      if (window.PointerEvent) {
+        stage.addEventListener('pointerdown', onPointerDown);
+        stage.addEventListener('pointermove', onPointerMove);
+        stage.addEventListener('pointerup', onPointerUp);
+        stage.addEventListener('pointercancel', onPointerUp);
+        stage.addEventListener('pointerleave', onPointerUp);
+      } else {
+        stage.addEventListener('touchstart', function (e) {
+          var t = e.changedTouches[0];
+          onPointerDown({ clientX: t.clientX, clientY: t.clientY, target: e.target });
+        }, { passive: true });
+        stage.addEventListener('touchmove', function (e) {
+          var t = e.changedTouches[0];
+          onPointerMove({ clientX: t.clientX, clientY: t.clientY,
+            preventDefault: function () { try { e.preventDefault(); } catch (_) {} } });
+        }, { passive: false });
+        stage.addEventListener('touchend', onPointerUp);
+        stage.addEventListener('touchcancel', onPointerUp);
+      }
 
       // Only auto-rotate when the carousel is visible in the viewport.
       if ('IntersectionObserver' in window) {

@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      try {
+        var t = localStorage.getItem('ccp_theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        d.dataset.theme = t;
+      } catch (e) { d.dataset.theme = 'dark'; }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Terms of Service - CivilCalc Pro</title>
   <meta name="description" content="Terms of Service for CivilCalc Pro.">
@@ -48,6 +60,12 @@
         <a href="/privacy/">Privacy Policy</a>
         <a class="active" href="/terms/">Terms of Service</a>
       </nav>
+      <div class="nav-right">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to light theme" title="Toggle theme">
+          <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -258,6 +276,23 @@
     (function () {
       var el = document.getElementById('year');
       if (el) el.textContent = new Date().getFullYear();
+    })();
+    (function () {
+      function apply(theme) {
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'light' ? '#fafbfc' : '#07080a');
+        document.querySelectorAll('[data-theme-toggle]').forEach(function (b) {
+          b.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+        });
+        try { localStorage.setItem('ccp_theme', theme); } catch (_) {}
+      }
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-theme-toggle]');
+        if (!btn) return;
+        apply(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
+      });
+      apply(document.documentElement.dataset.theme || 'dark');
     })();
   </script>
 </body>
