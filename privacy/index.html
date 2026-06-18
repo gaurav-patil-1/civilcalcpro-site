@@ -6,7 +6,7 @@
   <title>Privacy Policy - CivilCalc Pro</title>
   <meta name="description" content="Privacy Policy for CivilCalc Pro.">
   <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#09090b">
+  <meta name="theme-color" content="#07080a">
   <meta name="application-name" content="CivilCalc Pro">
   <meta name="apple-mobile-web-app-title" content="CivilCalc Pro">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -30,6 +30,9 @@
   <meta name="twitter:title" content="Privacy Policy - CivilCalc Pro">
   <meta name="twitter:description" content="Privacy Policy for CivilCalc Pro.">
   <meta name="twitter:image" content="https://civilcalcpro.com/logo-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -329,19 +332,53 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <section class="footer-card card">
-        <h2 class="section-title">CivilCalc Pro</h2>
-        <p class="muted">Support and legal information for the CivilCalc Pro Android app.</p>
-      </section>
-      <section class="footer-card card">
-        <h2 class="section-title">Related pages</h2>
-        <ul class="list-tight">
-          <li><a href="/">Home</a></li>
-          <li><a href="/terms/">Terms of Service</a></li>
-        </ul>
-      </section>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-card">
+          <div class="footer-brand">
+            <span class="brand-mark"><img src="/public/images/adaptive-icon.png" alt="CivilCalc Pro logo"></span>
+            <span>CivilCalc Pro</span>
+          </div>
+          <p>Construction estimation app for Android. Support and legal information for the CivilCalc Pro app.</p>
+        </div>
+
+        <div class="footer-card">
+          <h2 class="section-title">Product</h2>
+          <ul class="list-tight">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#calculators">Calculators</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro" rel="noopener noreferrer">Google Play</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-card">
+          <h2 class="section-title">Legal &amp; support</h2>
+          <ul class="list-tight">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="mailto:support@civilcalcpro.com">support@civilcalcpro.com</a></li>
+            <li><a href="mailto:ideas@civilcalcpro.com?subject=CivilCalc%20Pro%20-%20Feature%20request">ideas@civilcalcpro.com</a></li>
+            <li><a href="/app-ads.txt">app-ads.txt</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year">2026</span> CivilCalc Pro. All rights reserved.</p>
+        <div class="meta-links">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="mailto:contact@civilcalcpro.com">Contact</a>
+        </div>
+      </div>
     </div>
   </footer>
+  <script>
+    (function () {
+      var el = document.getElementById('year');
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
