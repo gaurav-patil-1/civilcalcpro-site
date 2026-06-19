@@ -1,124 +1,224 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      try {
-        var t = localStorage.getItem('ccp_theme');
-        if (t !== 'light' && t !== 'dark') {
-          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        try {
+          var t = localStorage.getItem("ccp_theme");
+          if (t !== "light" && t !== "dark") {
+            t =
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+          }
+          d.dataset.theme = t;
+        } catch (e) {
+          d.dataset.theme = "dark";
         }
-        d.dataset.theme = t;
-      } catch (e) { d.dataset.theme = 'dark'; }
-    })();
-  </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page not found - CivilCalc Pro</title>
-  <meta name="robots" content="noindex,follow">
-  <meta name="theme-color" content="#07080a">
-  <meta name="application-name" content="CivilCalc Pro">
-  <meta name="apple-mobile-web-app-title" content="CivilCalc Pro">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta property="og:site_name" content="CivilCalc Pro">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Page not found - CivilCalc Pro">
-  <meta property="og:description" content="The page you tried to open does not exist at this address.">
-  <meta property="og:image" content="https://civilcalcpro.com/logo-512.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
-  <meta property="og:image:alt" content="CivilCalc Pro logo">
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found - CivilCalc Pro</title>
+    <meta name="robots" content="noindex,follow" />
+    <meta name="theme-color" content="#07080a" />
+    <meta name="application-name" content="CivilCalc Pro" />
+    <meta name="apple-mobile-web-app-title" content="CivilCalc Pro" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:site_name" content="CivilCalc Pro" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Page not found - CivilCalc Pro" />
+    <meta
+      property="og:description"
+      content="The page you tried to open does not exist at this address."
+    />
+    <meta property="og:image" content="https://civilcalcpro.com/logo-512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="CivilCalc Pro logo" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="/assets/styles.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="/" aria-label="CivilCalc Pro home">
-        <span class="brand-mark"><img src="/public/images/adaptive-icon.png" alt="CivilCalc Pro logo"></span>
-        <span>CivilCalc Pro</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="/">Home</a>
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-      </nav>
-      <div class="nav-right">
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to light theme" title="Toggle theme">
-          <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-          <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main" class="container hero" style="padding-top:96px;padding-bottom:64px">
-    <article class="hero-card" style="max-width:640px;margin:0 auto;text-align:center">
-      <span class="eyebrow" style="margin-left:auto;margin-right:auto">Error 404</span>
-      <h1>
-        <span class="hl">We couldn&rsquo;t find</span>
-        <span class="accent">that page.</span>
-      </h1>
-      <p class="lead" style="margin-left:auto;margin-right:auto">The link may be broken or the page may have moved. Try one of these instead.</p>
-
-      <div class="hero-actions" style="justify-content:center">
-        <a class="button" href="/">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/></svg>
-          Go home
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="/" aria-label="CivilCalc Pro home">
+          <span class="brand-mark"
+            ><img
+              src="/public/images/adaptive-icon.png"
+              alt="CivilCalc Pro logo"
+          /></span>
+          <span>CivilCalc Pro</span>
         </a>
-        <a class="button-secondary" href="/privacy/">Privacy Policy</a>
-        <a class="button-secondary" href="/terms/">Terms of Service</a>
-      </div>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-bottom">
-        <p>&copy; <span id="year">2026</span> CivilCalc Pro. All rights reserved.</p>
-        <div class="meta-links">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/">Home</a>
           <a href="/privacy/">Privacy</a>
           <a href="/terms/">Terms</a>
-          <a href="mailto:contact@civilcalcpro.com">Contact</a>
+        </nav>
+        <div class="nav-right">
+          <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+            aria-label="Switch to light theme"
+            title="Toggle theme"
+          >
+            <svg
+              class="ico-moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+            <svg
+              class="ico-sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m4.93 19.07 1.41-1.41" />
+              <path d="m17.66 6.34 1.41-1.41" />
+            </svg>
+          </button>
         </div>
       </div>
-    </div>
-  </footer>
+    </header>
 
-  <script>
-    (function () {
-      var el = document.getElementById('year');
-      if (el) el.textContent = new Date().getFullYear();
-    })();
-    (function () {
-      function apply(theme) {
-        document.documentElement.dataset.theme = theme;
-        var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', theme === 'light' ? '#fafbfc' : '#07080a');
-        document.querySelectorAll('[data-theme-toggle]').forEach(function (b) {
-          b.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+    <main
+      id="main"
+      class="container hero"
+      style="padding-top: 96px; padding-bottom: 64px"
+    >
+      <article
+        class="hero-card"
+        style="max-width: 640px; margin: 0 auto; text-align: center"
+      >
+        <span class="eyebrow" style="margin-left: auto; margin-right: auto"
+          >Error 404</span
+        >
+        <h1>
+          <span class="hl">We couldn&rsquo;t find</span>
+          <span class="accent">that page.</span>
+        </h1>
+        <p class="lead" style="margin-left: auto; margin-right: auto">
+          The link may be broken or the page may have moved. Try one of these
+          instead.
+        </p>
+
+        <div class="hero-actions" style="justify-content: center">
+          <a class="button" href="/">
+            <svg
+              class="ico"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 12 12 3l9 9" />
+              <path d="M5 10v10h14V10" />
+            </svg>
+            Go home
+          </a>
+          <a class="button-secondary" href="/privacy/">Privacy Policy</a>
+          <a class="button-secondary" href="/terms/">Terms of Service</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="year">2026</span> CivilCalc Pro. All rights
+            reserved.
+          </p>
+          <div class="meta-links">
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
+            <a href="mailto:contact@civilcalcpro.com">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var el = document.getElementById("year");
+        if (el) el.textContent = new Date().getFullYear();
+      })();
+      (function () {
+        function apply(theme) {
+          document.documentElement.dataset.theme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta)
+            meta.setAttribute(
+              "content",
+              theme === "light" ? "#fafbfc" : "#07080a",
+            );
+          document
+            .querySelectorAll("[data-theme-toggle]")
+            .forEach(function (b) {
+              b.setAttribute(
+                "aria-label",
+                theme === "light"
+                  ? "Switch to dark theme"
+                  : "Switch to light theme",
+              );
+            });
+          try {
+            localStorage.setItem("ccp_theme", theme);
+          } catch (_) {}
+        }
+        document.addEventListener("click", function (e) {
+          var btn = e.target.closest("[data-theme-toggle]");
+          if (!btn) return;
+          apply(
+            document.documentElement.dataset.theme === "light"
+              ? "dark"
+              : "light",
+          );
         });
-        try { localStorage.setItem('ccp_theme', theme); } catch (_) {}
-      }
-      document.addEventListener('click', function (e) {
-        var btn = e.target.closest('[data-theme-toggle]');
-        if (!btn) return;
-        apply(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
-      });
-      apply(document.documentElement.dataset.theme || 'dark');
-    })();
-  </script>
-</body>
+        apply(document.documentElement.dataset.theme || "dark");
+      })();
+    </script>
+    <script
+      defer
+      src="https://portalstage.catchpoint.com/jp/203816/latest/InitialLoadScript.js"
+    ></script>
+  </body>
 </html>

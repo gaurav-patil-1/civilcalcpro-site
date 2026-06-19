@@ -1,901 +1,1737 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <script>
-    /* No-FOUC theme bootstrap. Sets data-theme on <html> before paint. */
-    (function () {
-      var d = document.documentElement;
-      try {
-        var t = localStorage.getItem('ccp_theme');
-        if (t !== 'light' && t !== 'dark') {
-          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      /* No-FOUC theme bootstrap. Sets data-theme on <html> before paint. */
+      (function () {
+        var d = document.documentElement;
+        try {
+          var t = localStorage.getItem("ccp_theme");
+          if (t !== "light" && t !== "dark") {
+            t =
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+          }
+          d.dataset.theme = t;
+        } catch (e) {
+          d.dataset.theme = "dark";
         }
-        d.dataset.theme = t;
-      } catch (e) {
-        d.dataset.theme = 'dark';
-      }
-    })();
-  </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CivilCalc Pro - Civil Engineering &amp; Construction Calculator App</title>
-  <meta name="description" content="CivilCalc Pro is a fast, on-device construction estimation app for Android. 50+ calculators for concrete, steel, RCC, masonry, plaster, paint, tiles, formwork and more, with optional Google Drive backup, PDF and CSV export, and Google Play billing.">
-  <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#07080a">
-  <meta name="application-name" content="CivilCalc Pro">
-  <meta name="apple-mobile-web-app-title" content="CivilCalc Pro">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="canonical" href="https://civilcalcpro.com/">
-  <meta property="og:site_name" content="CivilCalc Pro">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="CivilCalc Pro - Civil Engineering &amp; Construction Calculator App">
-  <meta property="og:description" content="Fast on-device construction estimation: concrete, steel, RCC, masonry, plaster, paint, tiles, formwork. Optional Google Drive backup, PDF and CSV export.">
-  <meta property="og:url" content="https://civilcalcpro.com/">
-  <meta property="og:image" content="https://civilcalcpro.com/logo-512.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
-  <meta property="og:image:alt" content="CivilCalc Pro logo">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="CivilCalc Pro - Civil Engineering &amp; Construction Calculator App">
-  <meta name="twitter:description" content="Fast on-device construction estimation: concrete, steel, RCC, masonry, plaster, paint, tiles, formwork. Optional Google Drive backup, PDF and CSV export.">
-  <meta name="twitter:image" content="https://civilcalcpro.com/logo-512.png">
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      CivilCalc Pro - Civil Engineering &amp; Construction Calculator App
+    </title>
+    <meta
+      name="description"
+      content="CivilCalc Pro is a fast, on-device construction estimation app for Android. 50+ calculators for concrete, steel, RCC, masonry, plaster, paint, tiles, formwork and more, with optional Google Drive backup, PDF and CSV export, and Google Play billing."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#07080a" />
+    <meta name="application-name" content="CivilCalc Pro" />
+    <meta name="apple-mobile-web-app-title" content="CivilCalc Pro" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href="https://civilcalcpro.com/" />
+    <meta property="og:site_name" content="CivilCalc Pro" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="CivilCalc Pro - Civil Engineering &amp; Construction Calculator App"
+    />
+    <meta
+      property="og:description"
+      content="Fast on-device construction estimation: concrete, steel, RCC, masonry, plaster, paint, tiles, formwork. Optional Google Drive backup, PDF and CSV export."
+    />
+    <meta property="og:url" content="https://civilcalcpro.com/" />
+    <meta property="og:image" content="https://civilcalcpro.com/logo-512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="CivilCalc Pro logo" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="CivilCalc Pro - Civil Engineering &amp; Construction Calculator App"
+    />
+    <meta
+      name="twitter:description"
+      content="Fast on-device construction estimation: concrete, steel, RCC, masonry, plaster, paint, tiles, formwork. Optional Google Drive backup, PDF and CSV export."
+    />
+    <meta
+      name="twitter:image"
+      content="https://civilcalcpro.com/logo-512.png"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
+    <script type="application/ld+json">
       {
-        "@type": "WebSite",
-        "@id": "https://civilcalcpro.com/#website",
-        "url": "https://civilcalcpro.com/",
-        "name": "CivilCalc Pro",
-        "alternateName": ["Civil Calc Pro", "CivilCalc"],
-        "publisher": { "@id": "https://civilcalcpro.com/#organization" }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://civilcalcpro.com/#webpage",
-        "url": "https://civilcalcpro.com/",
-        "name": "CivilCalc Pro",
-        "isPartOf": { "@id": "https://civilcalcpro.com/#website" },
-        "about": { "@id": "https://civilcalcpro.com/#organization" }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://civilcalcpro.com/#organization",
-        "url": "https://civilcalcpro.com/",
-        "name": "CivilCalc Pro",
-        "alternateName": ["Civil Calc Pro", "CivilCalc"],
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://civilcalcpro.com/logo-512.png",
-          "width": 512,
-          "height": 512
-        },
-        "image": "https://civilcalcpro.com/logo-512.png",
-        "email": "contact@civilcalcpro.com",
-        "contactPoint": [
+        "@context": "https://schema.org",
+        "@graph": [
           {
-            "@type": "ContactPoint",
-            "contactType": "customer support",
-            "email": "support@civilcalcpro.com",
-            "url": "https://civilcalcpro.com/"
+            "@type": "WebSite",
+            "@id": "https://civilcalcpro.com/#website",
+            "url": "https://civilcalcpro.com/",
+            "name": "CivilCalc Pro",
+            "alternateName": ["Civil Calc Pro", "CivilCalc"],
+            "publisher": { "@id": "https://civilcalcpro.com/#organization" }
           },
           {
-            "@type": "ContactPoint",
-            "contactType": "legal",
+            "@type": "WebPage",
+            "@id": "https://civilcalcpro.com/#webpage",
+            "url": "https://civilcalcpro.com/",
+            "name": "CivilCalc Pro",
+            "isPartOf": { "@id": "https://civilcalcpro.com/#website" },
+            "about": { "@id": "https://civilcalcpro.com/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://civilcalcpro.com/#organization",
+            "url": "https://civilcalcpro.com/",
+            "name": "CivilCalc Pro",
+            "alternateName": ["Civil Calc Pro", "CivilCalc"],
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://civilcalcpro.com/logo-512.png",
+              "width": 512,
+              "height": 512
+            },
+            "image": "https://civilcalcpro.com/logo-512.png",
             "email": "contact@civilcalcpro.com",
-            "url": "https://civilcalcpro.com/"
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "support@civilcalcpro.com",
+                "url": "https://civilcalcpro.com/"
+              },
+              {
+                "@type": "ContactPoint",
+                "contactType": "legal",
+                "email": "contact@civilcalcpro.com",
+                "url": "https://civilcalcpro.com/"
+              }
+            ]
+          },
+          {
+            "@type": "MobileApplication",
+            "name": "CivilCalc Pro",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Android",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
           }
         ]
-      },
-      {
-        "@type": "MobileApplication",
-        "name": "CivilCalc Pro",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Android",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
       }
-    ]
-  }
-  </script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="/" aria-label="CivilCalc Pro home">
-        <span class="brand-mark"><img src="/public/images/adaptive-icon.png" alt="CivilCalc Pro logo"></span>
-        <span>CivilCalc Pro</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a class="active" href="/">Home</a>
-        <a href="/privacy/">Privacy Policy</a>
-        <a href="/terms/">Terms of Service</a>
-      </nav>
-      <div class="nav-right">
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to light theme" title="Toggle theme">
-          <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-          <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-
-    <!-- =============== HERO =============== -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-card">
-          <span class="eyebrow">Built for the field</span>
-          <h1>
-            <span class="hl">Estimate concrete, steel, and finishes</span>
-            <span class="accent">in seconds with CivilCalc Pro.</span>
-          </h1>
-          <p class="lead">
-            CivilCalc Pro is a focused construction estimation app for Android. Fifty&#43; calculators for quantity, RCC, area, volume, and unit conversion - all running on&#8209;device, with optional Google Drive backup and clean PDF or CSV exports.
-          </p>
-
-          <div class="hero-actions">
-            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro" rel="noopener noreferrer" aria-label="Get CivilCalc Pro on Google Play">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <defs>
-                  <linearGradient id="pb-b" x1="2.6" y1="2.4" x2="11.6" y2="11.4" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#00A1FF"/>
-                    <stop offset=".26" stop-color="#00BEFF"/>
-                    <stop offset=".51" stop-color="#00D2FF"/>
-                    <stop offset=".76" stop-color="#00DFFF"/>
-                    <stop offset="1" stop-color="#00E3FF"/>
-                  </linearGradient>
-                  <linearGradient id="pb-y" x1="20.7" y1="12" x2="3.05" y2="12" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#FFE000"/>
-                    <stop offset=".41" stop-color="#FFBD00"/>
-                    <stop offset=".78" stop-color="#FFA500"/>
-                    <stop offset="1" stop-color="#FF9C00"/>
-                  </linearGradient>
-                  <linearGradient id="pb-r" x1="15.6" y1="13.7" x2="3.85" y2="25.4" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#FF3A44"/>
-                    <stop offset="1" stop-color="#C31162"/>
-                  </linearGradient>
-                  <linearGradient id="pb-g" x1="3.05" y1="-1.4" x2="8.4" y2="3.95" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#32A071"/>
-                    <stop offset=".07" stop-color="#2DA771"/>
-                    <stop offset=".48" stop-color="#15CF74"/>
-                    <stop offset=".8" stop-color="#06E775"/>
-                    <stop offset="1" stop-color="#00F076"/>
-                  </linearGradient>
-                </defs>
-                <path fill="url(#pb-b)" d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.06.06L12.78 12l.05-.06z"/>
-                <path fill="url(#pb-y)" d="m15.9 15.07-3.12-3.13v-.08l3.12-3.12.07.04 3.7 2.1c1.06.6 1.06 1.58 0 2.18l-3.7 2.1z"/>
-                <path fill="url(#pb-r)" d="M15.97 15.03 12.78 12 3.6 21.18c.35.37.93.42 1.59.05l10.78-6.13z"/>
-                <path fill="url(#pb-g)" d="m15.97 8.97-10.78-6.13c-.66-.38-1.24-.33-1.59.04L12.78 12z"/>
-              </svg>
-              <span class="pb-text">
-                <span class="pb-small">Get it on</span>
-                <span class="pb-big">Google Play</span>
-              </span>
-            </a>
-            <a class="button-secondary" href="#features">
-              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>
-              See features
-            </a>
-          </div>
-
-          <p class="hero-note">
-            <span class="dot"></span>
-            <span>No CivilCalc Pro account required - your projects live on your device. Google sign-in is optional and only used for backup if you turn it on.</span>
-          </p>
-
-          <div class="badge-row" aria-label="Highlights">
-            <span class="badge">On-device storage</span>
-            <span class="badge">Offline-first</span>
-            <span class="badge">PDF &amp; CSV export</span>
-            <span class="badge">Optional Drive backup</span>
-            <span class="badge">No tracking pixels</span>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-label="App screenshots">
-          <div class="app-shots" id="app-shots" aria-roledescription="carousel">
-            <button type="button" class="shot-arrow shot-prev" aria-label="Previous screenshot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button type="button" class="shot-arrow shot-next" aria-label="Next screenshot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-
-            <div class="shot-stage" id="shot-stage">
-              <div class="shot is-active" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro – Calculators home">
-                <img src="/public/images/screenshots/Dark/Device.png" data-name="Device.png" alt="CivilCalc Pro calculators home screen showing Quick Estimate and quick-access calculators" loading="eager" fetchpriority="high" draggable="false">
-              </div>
-              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-                <img src="/public/images/screenshots/Dark/Device_2.png" data-name="Device_2.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
-              </div>
-              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro RCC calculators" aria-hidden="true">
-                <img src="/public/images/screenshots/Dark/Device_3.png" data-name="Device_3.png" alt="CivilCalc Pro RCC calculators screen" loading="lazy" draggable="false">
-              </div>
-              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-                <img src="/public/images/screenshots/Dark/Device_4.png" data-name="Device_4.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
-              </div>
-              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-                <img src="/public/images/screenshots/Dark/Device_5.png" data-name="Device_5.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
-              </div>
-              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-                <img src="/public/images/screenshots/Dark/Device_6.png" data-name="Device_6.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
-              </div>
-              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-                <img src="/public/images/screenshots/Dark/Device_7.png" data-name="Device_7.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
-              </div>
-              <div class="shot" role="group" aria-roledescription="slide" aria-label="CivilCalc Pro screen" aria-hidden="true">
-                <img src="/public/images/screenshots/Dark/Device_8.png" data-name="Device_8.png" alt="CivilCalc Pro app screen" loading="lazy" draggable="false">
-              </div>
-            </div>
-
-            <div class="shot-dots" id="shot-dots" role="tablist" aria-label="Select screenshot">
-              <button type="button" class="is-active" data-i="0" role="tab" aria-selected="true" aria-label="Screenshot 1"></button>
-              <button type="button" data-i="1" role="tab" aria-selected="false" aria-label="Screenshot 2"></button>
-              <button type="button" data-i="2" role="tab" aria-selected="false" aria-label="Screenshot 3"></button>
-              <button type="button" data-i="3" role="tab" aria-selected="false" aria-label="Screenshot 4"></button>
-              <button type="button" data-i="4" role="tab" aria-selected="false" aria-label="Screenshot 5"></button>
-              <button type="button" data-i="5" role="tab" aria-selected="false" aria-label="Screenshot 6"></button>
-              <button type="button" data-i="6" role="tab" aria-selected="false" aria-label="Screenshot 7"></button>
-              <button type="button" data-i="7" role="tab" aria-selected="false" aria-label="Screenshot 8"></button>
-            </div>
-          </div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="/" aria-label="CivilCalc Pro home">
+          <span class="brand-mark"
+            ><img
+              src="/public/images/adaptive-icon.png"
+              alt="CivilCalc Pro logo"
+          /></span>
+          <span>CivilCalc Pro</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a class="active" href="/">Home</a>
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Service</a>
+        </nav>
+        <div class="nav-right">
+          <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+            aria-label="Switch to light theme"
+            title="Toggle theme"
+          >
+            <svg
+              class="ico-moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+            <svg
+              class="ico-sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m4.93 19.07 1.41-1.41" />
+              <path d="m17.66 6.34 1.41-1.41" />
+            </svg>
+          </button>
         </div>
       </div>
+    </header>
 
-      <div class="container">
-        <div class="stats" role="list">
-          <div class="stat" role="listitem">
-            <div class="stat-num">50<span class="plus">+</span></div>
-            <div class="stat-label">Calculators</div>
-          </div>
-          <div class="stat" role="listitem">
-            <div class="stat-num">Google Drive</div>
-            <div class="stat-label">Cloud Backup</div>
-          </div>
-          <div class="stat" role="listitem">
-            <div class="stat-num">24<span class="plus">+</span></div>
-            <div class="stat-label">Languages</div>
-          </div>
-          <div class="stat" role="listitem">
-            <div class="stat-num"><span class="unit">PDF &middot; CSV</span></div>
-            <div class="stat-label">Exports built in</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main id="main">
+      <!-- =============== HERO =============== -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-card">
+            <span class="eyebrow">Built for the field</span>
+            <h1>
+              <span class="hl">Estimate concrete, steel, and finishes</span>
+              <span class="accent">in seconds with CivilCalc Pro.</span>
+            </h1>
+            <p class="lead">
+              CivilCalc Pro is a focused construction estimation app for
+              Android. Fifty&#43; calculators for quantity, RCC, area, volume,
+              and unit conversion - all running on&#8209;device, with optional
+              Google Drive backup and clean PDF or CSV exports.
+            </p>
 
-    <!-- =============== FEATURES =============== -->
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">Features</span>
-          <h2>Everything a site engineer actually uses</h2>
-          <p>Designed for quick estimation on the job: focused calculators, saved projects, exports your team can read, and optional cloud backup when you want it.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="feature-card">
-            <span class="icon-tile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="4" y="3" width="16" height="18" rx="2"/>
-                <path d="M8 7h8M8 11h8M8 15h5"/>
-                <path d="M8 19h2"/>
-              </svg>
-            </span>
-            <h3>Quantity calculators</h3>
-            <p>Concrete volume, slabs, beams, columns, footings, tanks, brick and block walls, plaster, paint, tiles, excavation and formwork - with material breakdowns for cement, sand, aggregate, and steel.</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="icon-tile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 21h18"/>
-                <path d="M5 21V8l7-5 7 5v13"/>
-                <path d="M9 21v-8h6v8"/>
-              </svg>
-            </span>
-            <h3>Quick RCC checks</h3>
-            <p>Slab, beam, column and footing quick-design helpers for common layouts. Useful on-site for sanity checks before referring back to drawings, codes, or qualified review.</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="icon-tile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 7h18"/>
-                <path d="M3 12h12"/>
-                <path d="M3 17h18"/>
-                <path d="M19 9l3 3-3 3"/>
-              </svg>
-            </span>
-            <h3>Unit converter</h3>
-            <p>Length, area, volume, weight, pressure, speed, time and fuel - with sensible defaults for metric and imperial, and clean number formatting that matches the rest of the app.</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="icon-tile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <path d="M9 14h6"/>
-              </svg>
-            </span>
-            <h3>Projects, history &amp; favorites</h3>
-            <p>Group calculations into projects, pin frequent calculators, save reusable defaults, and reopen anything from a clean history view. No accounts, no logins - just your work.</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="icon-tile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                <path d="M14 3v6h6"/>
-                <path d="M9 17h6"/>
-                <path d="M9 13h6"/>
-              </svg>
-            </span>
-            <h3>Clean PDF &amp; CSV export</h3>
-            <p>Share a polished PDF report with your team or client, or pipe the numbers into a spreadsheet via CSV. Export uses the standard device share sheet - no third party in between.</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="icon-tile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6z"/>
-                <path d="m9 12 2 2 4-4"/>
-              </svg>
-            </span>
-            <h3>Privacy you can trust</h3>
-            <p>Project data stays on your device by default. Google Drive backup uses the hidden <span class="mono">drive.appdata</span> folder in <em>your</em> account - we never see your project content, and we don&rsquo;t sell it.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============== CALCULATOR CATEGORIES =============== -->
-    <section class="section" id="calculators">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">Calculator library</span>
-          <h2>Five categories, fifty-plus calculators</h2>
-          <p>Carefully chosen for everyday construction estimation - without bloat, without a paywall on the basics.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="cat-card">
-            <div class="cat-head">
-              <span class="icon-tile">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-9 5 9 5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
-              </span>
-              <h3>Quantity</h3>
-              <span class="count">25&#43;</span>
-            </div>
-            <p class="cat-desc">Material take-off for the bulk of a typical project.</p>
-            <div class="chip-row">
-              <span class="chip">Concrete volume</span>
-              <span class="chip">Slab / beam / column</span>
-              <span class="chip">Footing &amp; tank</span>
-              <span class="chip">Rebar &amp; BBS</span>
-              <span class="chip">Brick / block wall</span>
-              <span class="chip">Plaster &amp; paint</span>
-              <span class="chip">Tiles &amp; flooring</span>
-              <span class="chip">Excavation</span>
-              <span class="chip">Formwork</span>
-            </div>
-          </article>
-
-          <article class="cat-card">
-            <div class="cat-head">
-              <span class="icon-tile alt">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8v8H8z"/><path d="M3 12h5"/><path d="M16 12h5"/><path d="M12 3v5"/><path d="M12 16v5"/></svg>
-              </span>
-              <h3>RCC</h3>
-              <span class="count">4</span>
-            </div>
-            <p class="cat-desc">Quick reinforced-concrete design checks.</p>
-            <div class="chip-row">
-              <span class="chip">Slab quick</span>
-              <span class="chip">Beam quick</span>
-              <span class="chip">Column quick</span>
-              <span class="chip">Footing quick</span>
-            </div>
-          </article>
-
-          <article class="cat-card">
-            <div class="cat-head">
-              <span class="icon-tile">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 21h18"/></svg>
-              </span>
-              <h3>Area</h3>
-              <span class="count">6</span>
-            </div>
-            <p class="cat-desc">Plot, room, and shape areas in one tap.</p>
-            <div class="chip-row">
-              <span class="chip">Rectangle</span>
-              <span class="chip">Square</span>
-              <span class="chip">Circle</span>
-              <span class="chip">Triangle</span>
-              <span class="chip">Trapezoid</span>
-              <span class="chip">Plot &amp; carpet</span>
-            </div>
-          </article>
-
-          <article class="cat-card">
-            <div class="cat-head">
-              <span class="icon-tile">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4-9 4z"/><path d="m3 7 9 4v10L3 17z"/><path d="M21 7v10l-9 4"/></svg>
-              </span>
-              <h3>Volume</h3>
-              <span class="count">4</span>
-            </div>
-            <p class="cat-desc">Cuboid, cylinder, cone and sphere volumes.</p>
-            <div class="chip-row">
-              <span class="chip">Cuboid</span>
-              <span class="chip">Cylinder</span>
-              <span class="chip">Cone</span>
-              <span class="chip">Sphere</span>
-            </div>
-          </article>
-
-          <article class="cat-card">
-            <div class="cat-head">
-              <span class="icon-tile alt">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h13"/><path d="m13 6 6 6-6 6"/><path d="M21 6v12"/></svg>
-              </span>
-              <h3>Conversion</h3>
-              <span class="count">8</span>
-            </div>
-            <p class="cat-desc">Everyday unit conversions, instantly.</p>
-            <div class="chip-row">
-              <span class="chip">Length</span>
-              <span class="chip">Area</span>
-              <span class="chip">Volume</span>
-              <span class="chip">Weight</span>
-              <span class="chip">Pressure</span>
-              <span class="chip">Speed</span>
-              <span class="chip">Time</span>
-              <span class="chip">Fuel</span>
-            </div>
-          </article>
-
-          <article class="cat-card">
-            <div class="cat-head">
-              <span class="icon-tile warn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
-              </span>
-              <h3>Estimation only</h3>
-              <span class="count">!</span>
-            </div>
-            <p class="cat-desc">CivilCalc Pro is a workflow and estimation tool. It does <strong>not</strong> replace licensed engineering review, structural design approval, surveying, or local code compliance. Always verify against drawings, codes, and qualified professionals before procurement or construction.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============== SPLIT — PRIVACY / BACKUP =============== -->
-    <section class="section">
-      <div class="container split">
-        <article class="card">
-          <span class="kicker">Your data, your device</span>
-          <div class="split-head">
-            <h2>Local-first by design</h2>
-            <p>Most apps in this category send everything to a server. CivilCalc Pro doesn&rsquo;t. Projects, calculations, favorites, and settings live on your phone unless you explicitly enable backup.</p>
-          </div>
-          <ul class="checklist">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11L4 12"/></svg>
-              <span><strong>No CivilCalc Pro account.</strong> No sign-up form, no password reset emails.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11L4 12"/></svg>
-              <span><strong>No project content sold.</strong> We don&rsquo;t sell your project data or backup content for money.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11L4 12"/></svg>
-              <span><strong>Works offline.</strong> Calculators run on-device - useful when you&rsquo;re on a site with weak signal.</span>
-            </li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <span class="kicker">Optional cloud backup</span>
-          <div class="split-head">
-            <h2>Backup to your own Google Drive</h2>
-            <p>If you turn it on, backup uses the <span class="mono">drive.appdata</span> scope to write to a hidden CivilCalc Pro folder inside <em>your</em> Google account. Other apps can&rsquo;t see it, and you can disconnect or delete it any time.</p>
-          </div>
-          <ul class="checklist">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11L4 12"/></svg>
-              <span><strong>App-specific scope.</strong> Access is limited to CivilCalc Pro&rsquo;s own backup files - not your wider Drive.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11L4 12"/></svg>
-              <span><strong>One-tap restore.</strong> Reinstalling? Sign in and pull your latest backup back down.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11L4 12"/></svg>
-              <span><strong>Always reversible.</strong> Disconnect the account or delete the cloud backup from inside the app.</span>
-            </li>
-          </ul>
-          <div style="margin-top:22px">
-            <a class="button-secondary" href="/privacy/#google-data">
-              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-              Read the backup details
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- =============== CONTACT =============== -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">Support</span>
-          <h2>Need a hand? We answer email.</h2>
-          <p>Use the addresses below for app issues, privacy questions, or legal notices. Subscriptions and one-time purchases are handled by Google Play and can be managed there.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="info-card">
-            <span class="icon-tile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="m4 7 8 6 8-6"/></svg>
-            </span>
-            <h3 class="section-title">Contacts</h3>
-            <p class="section-intro">Pick the inbox that fits - or send us your ideas for the next update.</p>
-            <div class="contact-list">
-              <div class="contact-item">
-                <strong>App support</strong>
-                <a href="mailto:support@civilcalcpro.com">support@civilcalcpro.com</a>
-              </div>
-              <div class="contact-item">
-                <strong>Feature requests &amp; ideas</strong>
-                <a href="mailto:ideas@civilcalcpro.com?subject=CivilCalc%20Pro%20-%20Feature%20request">ideas@civilcalcpro.com</a>
-              </div>
-              <div class="contact-item">
-                <strong>Privacy &amp; legal</strong>
-                <a href="mailto:contact@civilcalcpro.com">contact@civilcalcpro.com</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="info-card">
-            <span class="icon-tile alt">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18"/><path d="M3 12h18"/><path d="M3 17h18"/></svg>
-            </span>
-            <h3 class="section-title">Subscriptions &amp; purchases</h3>
-            <p class="section-intro">Paid features and subscriptions are billed and managed by Google Play.</p>
-            <div class="hero-actions" style="margin-bottom:0">
-              <a class="button-secondary" href="https://play.google.com/store/account/subscriptions" rel="noopener noreferrer">
-                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3h7v7"/><path d="M21 3 10 14"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
-                Manage on Google Play
+            <div class="hero-actions">
+              <a
+                class="play-badge"
+                href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                rel="noopener noreferrer"
+                aria-label="Get CivilCalc Pro on Google Play"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <defs>
+                    <linearGradient
+                      id="pb-b"
+                      x1="2.6"
+                      y1="2.4"
+                      x2="11.6"
+                      y2="11.4"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#00A1FF" />
+                      <stop offset=".26" stop-color="#00BEFF" />
+                      <stop offset=".51" stop-color="#00D2FF" />
+                      <stop offset=".76" stop-color="#00DFFF" />
+                      <stop offset="1" stop-color="#00E3FF" />
+                    </linearGradient>
+                    <linearGradient
+                      id="pb-y"
+                      x1="20.7"
+                      y1="12"
+                      x2="3.05"
+                      y2="12"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#FFE000" />
+                      <stop offset=".41" stop-color="#FFBD00" />
+                      <stop offset=".78" stop-color="#FFA500" />
+                      <stop offset="1" stop-color="#FF9C00" />
+                    </linearGradient>
+                    <linearGradient
+                      id="pb-r"
+                      x1="15.6"
+                      y1="13.7"
+                      x2="3.85"
+                      y2="25.4"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#FF3A44" />
+                      <stop offset="1" stop-color="#C31162" />
+                    </linearGradient>
+                    <linearGradient
+                      id="pb-g"
+                      x1="3.05"
+                      y1="-1.4"
+                      x2="8.4"
+                      y2="3.95"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#32A071" />
+                      <stop offset=".07" stop-color="#2DA771" />
+                      <stop offset=".48" stop-color="#15CF74" />
+                      <stop offset=".8" stop-color="#06E775" />
+                      <stop offset="1" stop-color="#00F076" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill="url(#pb-b)"
+                    d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.06.06L12.78 12l.05-.06z"
+                  />
+                  <path
+                    fill="url(#pb-y)"
+                    d="m15.9 15.07-3.12-3.13v-.08l3.12-3.12.07.04 3.7 2.1c1.06.6 1.06 1.58 0 2.18l-3.7 2.1z"
+                  />
+                  <path
+                    fill="url(#pb-r)"
+                    d="M15.97 15.03 12.78 12 3.6 21.18c.35.37.93.42 1.59.05l10.78-6.13z"
+                  />
+                  <path
+                    fill="url(#pb-g)"
+                    d="m15.97 8.97-10.78-6.13c-.66-.38-1.24-.33-1.59.04L12.78 12z"
+                  />
+                </svg>
+                <span class="pb-text">
+                  <span class="pb-small">Get it on</span>
+                  <span class="pb-big">Google Play</span>
+                </span>
               </a>
-              <a class="button-ghost" href="mailto:support@civilcalcpro.com?subject=CivilCalc%20Pro%20Support">Email support</a>
+              <a class="button-secondary" href="#features">
+                <svg
+                  class="ico"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4l3 2" />
+                </svg>
+                See features
+              </a>
+            </div>
+
+            <p class="hero-note">
+              <span class="dot"></span>
+              <span
+                >No CivilCalc Pro account required - your projects live on your
+                device. Google sign-in is optional and only used for backup if
+                you turn it on.</span
+              >
+            </p>
+
+            <div class="badge-row" aria-label="Highlights">
+              <span class="badge">On-device storage</span>
+              <span class="badge">Offline-first</span>
+              <span class="badge">PDF &amp; CSV export</span>
+              <span class="badge">Optional Drive backup</span>
+              <span class="badge">No tracking pixels</span>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="App screenshots">
+            <div
+              class="app-shots"
+              id="app-shots"
+              aria-roledescription="carousel"
+            >
+              <button
+                type="button"
+                class="shot-arrow shot-prev"
+                aria-label="Previous screenshot"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="shot-arrow shot-next"
+                aria-label="Next screenshot"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+
+              <div class="shot-stage" id="shot-stage">
+                <div
+                  class="shot is-active"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="CivilCalc Pro – Calculators home"
+                >
+                  <img
+                    src="/public/images/screenshots/Dark/Device.png"
+                    data-name="Device.png"
+                    alt="CivilCalc Pro calculators home screen showing Quick Estimate and quick-access calculators"
+                    loading="eager"
+                    fetchpriority="high"
+                    draggable="false"
+                  />
+                </div>
+                <div
+                  class="shot"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="CivilCalc Pro screen"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="/public/images/screenshots/Dark/Device_2.png"
+                    data-name="Device_2.png"
+                    alt="CivilCalc Pro app screen"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+                <div
+                  class="shot"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="CivilCalc Pro RCC calculators"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="/public/images/screenshots/Dark/Device_3.png"
+                    data-name="Device_3.png"
+                    alt="CivilCalc Pro RCC calculators screen"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+                <div
+                  class="shot"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="CivilCalc Pro screen"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="/public/images/screenshots/Dark/Device_4.png"
+                    data-name="Device_4.png"
+                    alt="CivilCalc Pro app screen"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+                <div
+                  class="shot"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="CivilCalc Pro screen"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="/public/images/screenshots/Dark/Device_5.png"
+                    data-name="Device_5.png"
+                    alt="CivilCalc Pro app screen"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+                <div
+                  class="shot"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="CivilCalc Pro screen"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="/public/images/screenshots/Dark/Device_6.png"
+                    data-name="Device_6.png"
+                    alt="CivilCalc Pro app screen"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+                <div
+                  class="shot"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="CivilCalc Pro screen"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="/public/images/screenshots/Dark/Device_7.png"
+                    data-name="Device_7.png"
+                    alt="CivilCalc Pro app screen"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+                <div
+                  class="shot"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="CivilCalc Pro screen"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="/public/images/screenshots/Dark/Device_8.png"
+                    data-name="Device_8.png"
+                    alt="CivilCalc Pro app screen"
+                    loading="lazy"
+                    draggable="false"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="shot-dots"
+                id="shot-dots"
+                role="tablist"
+                aria-label="Select screenshot"
+              >
+                <button
+                  type="button"
+                  class="is-active"
+                  data-i="0"
+                  role="tab"
+                  aria-selected="true"
+                  aria-label="Screenshot 1"
+                ></button>
+                <button
+                  type="button"
+                  data-i="1"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Screenshot 2"
+                ></button>
+                <button
+                  type="button"
+                  data-i="2"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Screenshot 3"
+                ></button>
+                <button
+                  type="button"
+                  data-i="3"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Screenshot 4"
+                ></button>
+                <button
+                  type="button"
+                  data-i="4"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Screenshot 5"
+                ></button>
+                <button
+                  type="button"
+                  data-i="5"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Screenshot 6"
+                ></button>
+                <button
+                  type="button"
+                  data-i="6"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Screenshot 7"
+                ></button>
+                <button
+                  type="button"
+                  data-i="7"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Screenshot 8"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="stats" role="list">
+            <div class="stat" role="listitem">
+              <div class="stat-num">50<span class="plus">+</span></div>
+              <div class="stat-label">Calculators</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="stat-num">Google Drive</div>
+              <div class="stat-label">Cloud Backup</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="stat-num">24<span class="plus">+</span></div>
+              <div class="stat-label">Languages</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="stat-num">
+                <span class="unit">PDF &middot; CSV</span>
+              </div>
+              <div class="stat-label">Exports built in</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============== FEATURES =============== -->
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Features</span>
+            <h2>Everything a site engineer actually uses</h2>
+            <p>
+              Designed for quick estimation on the job: focused calculators,
+              saved projects, exports your team can read, and optional cloud
+              backup when you want it.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="feature-card">
+              <span class="icon-tile">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="4" y="3" width="16" height="18" rx="2" />
+                  <path d="M8 7h8M8 11h8M8 15h5" />
+                  <path d="M8 19h2" />
+                </svg>
+              </span>
+              <h3>Quantity calculators</h3>
+              <p>
+                Concrete volume, slabs, beams, columns, footings, tanks, brick
+                and block walls, plaster, paint, tiles, excavation and formwork
+                - with material breakdowns for cement, sand, aggregate, and
+                steel.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="icon-tile">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 21h18" />
+                  <path d="M5 21V8l7-5 7 5v13" />
+                  <path d="M9 21v-8h6v8" />
+                </svg>
+              </span>
+              <h3>Quick RCC checks</h3>
+              <p>
+                Slab, beam, column and footing quick-design helpers for common
+                layouts. Useful on-site for sanity checks before referring back
+                to drawings, codes, or qualified review.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="icon-tile">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 7h18" />
+                  <path d="M3 12h12" />
+                  <path d="M3 17h18" />
+                  <path d="M19 9l3 3-3 3" />
+                </svg>
+              </span>
+              <h3>Unit converter</h3>
+              <p>
+                Length, area, volume, weight, pressure, speed, time and fuel -
+                with sensible defaults for metric and imperial, and clean number
+                formatting that matches the rest of the app.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="icon-tile">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                  />
+                  <path d="M9 14h6" />
+                </svg>
+              </span>
+              <h3>Projects, history &amp; favorites</h3>
+              <p>
+                Group calculations into projects, pin frequent calculators, save
+                reusable defaults, and reopen anything from a clean history
+                view. No accounts, no logins - just your work.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="icon-tile">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  />
+                  <path d="M14 3v6h6" />
+                  <path d="M9 17h6" />
+                  <path d="M9 13h6" />
+                </svg>
+              </span>
+              <h3>Clean PDF &amp; CSV export</h3>
+              <p>
+                Share a polished PDF report with your team or client, or pipe
+                the numbers into a spreadsheet via CSV. Export uses the standard
+                device share sheet - no third party in between.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="icon-tile">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </span>
+              <h3>Privacy you can trust</h3>
+              <p>
+                Project data stays on your device by default. Google Drive
+                backup uses the hidden
+                <span class="mono">drive.appdata</span> folder in
+                <em>your</em> account - we never see your project content, and
+                we don&rsquo;t sell it.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============== CALCULATOR CATEGORIES =============== -->
+      <section class="section" id="calculators">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Calculator library</span>
+            <h2>Five categories, fifty-plus calculators</h2>
+            <p>
+              Carefully chosen for everyday construction estimation - without
+              bloat, without a paywall on the basics.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="cat-card">
+              <div class="cat-head">
+                <span class="icon-tile">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m12 3-9 5 9 5 9-5z" />
+                    <path d="m3 12 9 5 9-5" />
+                    <path d="m3 17 9 5 9-5" />
+                  </svg>
+                </span>
+                <h3>Quantity</h3>
+                <span class="count">25&#43;</span>
+              </div>
+              <p class="cat-desc">
+                Material take-off for the bulk of a typical project.
+              </p>
+              <div class="chip-row">
+                <span class="chip">Concrete volume</span>
+                <span class="chip">Slab / beam / column</span>
+                <span class="chip">Footing &amp; tank</span>
+                <span class="chip">Rebar &amp; BBS</span>
+                <span class="chip">Brick / block wall</span>
+                <span class="chip">Plaster &amp; paint</span>
+                <span class="chip">Tiles &amp; flooring</span>
+                <span class="chip">Excavation</span>
+                <span class="chip">Formwork</span>
+              </div>
+            </article>
+
+            <article class="cat-card">
+              <div class="cat-head">
+                <span class="icon-tile alt">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M8 8h8v8H8z" />
+                    <path d="M3 12h5" />
+                    <path d="M16 12h5" />
+                    <path d="M12 3v5" />
+                    <path d="M12 16v5" />
+                  </svg>
+                </span>
+                <h3>RCC</h3>
+                <span class="count">4</span>
+              </div>
+              <p class="cat-desc">Quick reinforced-concrete design checks.</p>
+              <div class="chip-row">
+                <span class="chip">Slab quick</span>
+                <span class="chip">Beam quick</span>
+                <span class="chip">Column quick</span>
+                <span class="chip">Footing quick</span>
+              </div>
+            </article>
+
+            <article class="cat-card">
+              <div class="cat-head">
+                <span class="icon-tile">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="14" rx="2" />
+                    <path d="M3 21h18" />
+                  </svg>
+                </span>
+                <h3>Area</h3>
+                <span class="count">6</span>
+              </div>
+              <p class="cat-desc">Plot, room, and shape areas in one tap.</p>
+              <div class="chip-row">
+                <span class="chip">Rectangle</span>
+                <span class="chip">Square</span>
+                <span class="chip">Circle</span>
+                <span class="chip">Triangle</span>
+                <span class="chip">Trapezoid</span>
+                <span class="chip">Plot &amp; carpet</span>
+              </div>
+            </article>
+
+            <article class="cat-card">
+              <div class="cat-head">
+                <span class="icon-tile">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m3 7 9-4 9 4-9 4z" />
+                    <path d="m3 7 9 4v10L3 17z" />
+                    <path d="M21 7v10l-9 4" />
+                  </svg>
+                </span>
+                <h3>Volume</h3>
+                <span class="count">4</span>
+              </div>
+              <p class="cat-desc">Cuboid, cylinder, cone and sphere volumes.</p>
+              <div class="chip-row">
+                <span class="chip">Cuboid</span>
+                <span class="chip">Cylinder</span>
+                <span class="chip">Cone</span>
+                <span class="chip">Sphere</span>
+              </div>
+            </article>
+
+            <article class="cat-card">
+              <div class="cat-head">
+                <span class="icon-tile alt">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 12h13" />
+                    <path d="m13 6 6 6-6 6" />
+                    <path d="M21 6v12" />
+                  </svg>
+                </span>
+                <h3>Conversion</h3>
+                <span class="count">8</span>
+              </div>
+              <p class="cat-desc">Everyday unit conversions, instantly.</p>
+              <div class="chip-row">
+                <span class="chip">Length</span>
+                <span class="chip">Area</span>
+                <span class="chip">Volume</span>
+                <span class="chip">Weight</span>
+                <span class="chip">Pressure</span>
+                <span class="chip">Speed</span>
+                <span class="chip">Time</span>
+                <span class="chip">Fuel</span>
+              </div>
+            </article>
+
+            <article class="cat-card">
+              <div class="cat-head">
+                <span class="icon-tile warn">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2v4" />
+                    <path d="M12 18v4" />
+                    <path d="m4.93 4.93 2.83 2.83" />
+                    <path d="m16.24 16.24 2.83 2.83" />
+                    <path d="M2 12h4" />
+                    <path d="M18 12h4" />
+                    <path d="m4.93 19.07 2.83-2.83" />
+                    <path d="m16.24 7.76 2.83-2.83" />
+                  </svg>
+                </span>
+                <h3>Estimation only</h3>
+                <span class="count">!</span>
+              </div>
+              <p class="cat-desc">
+                CivilCalc Pro is a workflow and estimation tool. It does
+                <strong>not</strong> replace licensed engineering review,
+                structural design approval, surveying, or local code compliance.
+                Always verify against drawings, codes, and qualified
+                professionals before procurement or construction.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============== SPLIT — PRIVACY / BACKUP =============== -->
+      <section class="section">
+        <div class="container split">
+          <article class="card">
+            <span class="kicker">Your data, your device</span>
+            <div class="split-head">
+              <h2>Local-first by design</h2>
+              <p>
+                Most apps in this category send everything to a server.
+                CivilCalc Pro doesn&rsquo;t. Projects, calculations, favorites,
+                and settings live on your phone unless you explicitly enable
+                backup.
+              </p>
+            </div>
+            <ul class="checklist">
+              <li>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m20 6-11 11L4 12" />
+                </svg>
+                <span
+                  ><strong>No CivilCalc Pro account.</strong> No sign-up form,
+                  no password reset emails.</span
+                >
+              </li>
+              <li>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m20 6-11 11L4 12" />
+                </svg>
+                <span
+                  ><strong>No project content sold.</strong> We don&rsquo;t sell
+                  your project data or backup content for money.</span
+                >
+              </li>
+              <li>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m20 6-11 11L4 12" />
+                </svg>
+                <span
+                  ><strong>Works offline.</strong> Calculators run on-device -
+                  useful when you&rsquo;re on a site with weak signal.</span
+                >
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <span class="kicker">Optional cloud backup</span>
+            <div class="split-head">
+              <h2>Backup to your own Google Drive</h2>
+              <p>
+                If you turn it on, backup uses the
+                <span class="mono">drive.appdata</span> scope to write to a
+                hidden CivilCalc Pro folder inside <em>your</em> Google account.
+                Other apps can&rsquo;t see it, and you can disconnect or delete
+                it any time.
+              </p>
+            </div>
+            <ul class="checklist">
+              <li>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m20 6-11 11L4 12" />
+                </svg>
+                <span
+                  ><strong>App-specific scope.</strong> Access is limited to
+                  CivilCalc Pro&rsquo;s own backup files - not your wider
+                  Drive.</span
+                >
+              </li>
+              <li>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m20 6-11 11L4 12" />
+                </svg>
+                <span
+                  ><strong>One-tap restore.</strong> Reinstalling? Sign in and
+                  pull your latest backup back down.</span
+                >
+              </li>
+              <li>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m20 6-11 11L4 12" />
+                </svg>
+                <span
+                  ><strong>Always reversible.</strong> Disconnect the account or
+                  delete the cloud backup from inside the app.</span
+                >
+              </li>
+            </ul>
+            <div style="margin-top: 22px">
+              <a class="button-secondary" href="/privacy/#google-data">
+                <svg
+                  class="ico"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m13 6 6 6-6 6" />
+                </svg>
+                Read the backup details
+              </a>
             </div>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- =============== FAQ =============== -->
-    <section class="section">
-      <div class="container" style="max-width: 880px">
-        <div class="section-head">
-          <span class="kicker">FAQ</span>
-          <h2>Common questions</h2>
-        </div>
-
-        <div class="faq">
-          <details>
-            <summary>Do I need to create an account?</summary>
-            <p>No. CivilCalc Pro doesn&rsquo;t have its own account system. Your projects and calculations are saved on your device. Google sign-in is only used if you choose to enable backup.</p>
-          </details>
-          <details>
-            <summary>Does the app work without internet?</summary>
-            <p>Yes. All calculators run on-device. Internet is only needed for optional features - Drive backup, Google Play purchases, and ads in the free tier.</p>
-          </details>
-          <details>
-            <summary>What does the free tier include?</summary>
-            <p>Most calculators are available in the free tier with occasional interstitial ads, plus rewarded-ad unlocks for select advanced tools. A paid upgrade removes ads and unlocks the full set without the rewarded gate.</p>
-          </details>
-          <details>
-            <summary>Where are my projects stored?</summary>
-            <p>On your device. If you enable Google Drive backup, an encrypted-at-rest copy is also written to the hidden <span class="mono">drive.appdata</span> folder inside your own Google account.</p>
-          </details>
-          <details>
-            <summary>Can I export results to share with my team?</summary>
-            <p>Yes. Use PDF for a clean report or CSV for spreadsheets. Exports go through the standard Android share sheet, so you stay in control of who receives them.</p>
-          </details>
-          <details>
-            <summary>Is CivilCalc Pro a substitute for an engineer?</summary>
-            <p>No. It&rsquo;s an estimation and workflow tool. Always verify outputs against project drawings, local codes, manufacturer guidance, and qualified professional review before procurement or construction.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============== CTA BANNER =============== -->
-    <section class="section">
-      <div class="container">
-        <div class="cta-banner">
-          <div>
-            <h2>Estimate faster on your next project.</h2>
-            <p>Free to install. No CivilCalc Pro account. No surprises - the free tier is genuinely useful, and the paid upgrade is a one-time choice you can always change later through Google Play.</p>
+      <!-- =============== CONTACT =============== -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Support</span>
+            <h2>Need a hand? We answer email.</h2>
+            <p>
+              Use the addresses below for app issues, privacy questions, or
+              legal notices. Subscriptions and one-time purchases are handled by
+              Google Play and can be managed there.
+            </p>
           </div>
-          <div class="actions">
-            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro" rel="noopener noreferrer" aria-label="Get CivilCalc Pro on Google Play">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <defs>
-                  <linearGradient id="pbc-b" x1="2.6" y1="2.4" x2="11.6" y2="11.4" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#00A1FF"/><stop offset=".26" stop-color="#00BEFF"/><stop offset=".51" stop-color="#00D2FF"/><stop offset=".76" stop-color="#00DFFF"/><stop offset="1" stop-color="#00E3FF"/>
-                  </linearGradient>
-                  <linearGradient id="pbc-y" x1="20.7" y1="12" x2="3.05" y2="12" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#FFE000"/><stop offset=".41" stop-color="#FFBD00"/><stop offset=".78" stop-color="#FFA500"/><stop offset="1" stop-color="#FF9C00"/>
-                  </linearGradient>
-                  <linearGradient id="pbc-r" x1="15.6" y1="13.7" x2="3.85" y2="25.4" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#FF3A44"/><stop offset="1" stop-color="#C31162"/>
-                  </linearGradient>
-                  <linearGradient id="pbc-g" x1="3.05" y1="-1.4" x2="8.4" y2="3.95" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#32A071"/><stop offset=".07" stop-color="#2DA771"/><stop offset=".48" stop-color="#15CF74"/><stop offset=".8" stop-color="#06E775"/><stop offset="1" stop-color="#00F076"/>
-                  </linearGradient>
-                </defs>
-                <path fill="url(#pbc-b)" d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.06.06L12.78 12l.05-.06z"/>
-                <path fill="url(#pbc-y)" d="m15.9 15.07-3.12-3.13v-.08l3.12-3.12.07.04 3.7 2.1c1.06.6 1.06 1.58 0 2.18l-3.7 2.1z"/>
-                <path fill="url(#pbc-r)" d="M15.97 15.03 12.78 12 3.6 21.18c.35.37.93.42 1.59.05l10.78-6.13z"/>
-                <path fill="url(#pbc-g)" d="m15.97 8.97-10.78-6.13c-.66-.38-1.24-.33-1.59.04L12.78 12z"/>
-              </svg>
-              <span class="pb-text">
-                <span class="pb-small">Get it on</span>
-                <span class="pb-big">Google Play</span>
+
+          <div class="grid-2">
+            <article class="info-card">
+              <span class="icon-tile">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"
+                  />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
               </span>
-            </a>
-            <a class="button-ghost" href="mailto:support@civilcalcpro.com?subject=CivilCalc%20Pro%20Support">Talk to us</a>
+              <h3 class="section-title">Contacts</h3>
+              <p class="section-intro">
+                Pick the inbox that fits - or send us your ideas for the next
+                update.
+              </p>
+              <div class="contact-list">
+                <div class="contact-item">
+                  <strong>App support</strong>
+                  <a href="mailto:support@civilcalcpro.com"
+                    >support@civilcalcpro.com</a
+                  >
+                </div>
+                <div class="contact-item">
+                  <strong>Feature requests &amp; ideas</strong>
+                  <a
+                    href="mailto:ideas@civilcalcpro.com?subject=CivilCalc%20Pro%20-%20Feature%20request"
+                    >ideas@civilcalcpro.com</a
+                  >
+                </div>
+                <div class="contact-item">
+                  <strong>Privacy &amp; legal</strong>
+                  <a href="mailto:contact@civilcalcpro.com"
+                    >contact@civilcalcpro.com</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article class="info-card">
+              <span class="icon-tile alt">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 7h18" />
+                  <path d="M3 12h18" />
+                  <path d="M3 17h18" />
+                </svg>
+              </span>
+              <h3 class="section-title">Subscriptions &amp; purchases</h3>
+              <p class="section-intro">
+                Paid features and subscriptions are billed and managed by Google
+                Play.
+              </p>
+              <div class="hero-actions" style="margin-bottom: 0">
+                <a
+                  class="button-secondary"
+                  href="https://play.google.com/store/account/subscriptions"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    class="ico"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M14 3h7v7" />
+                    <path d="M21 3 10 14" />
+                    <path
+                      d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"
+                    />
+                  </svg>
+                  Manage on Google Play
+                </a>
+                <a
+                  class="button-ghost"
+                  href="mailto:support@civilcalcpro.com?subject=CivilCalc%20Pro%20Support"
+                  >Email support</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============== FAQ =============== -->
+      <section class="section">
+        <div class="container" style="max-width: 880px">
+          <div class="section-head">
+            <span class="kicker">FAQ</span>
+            <h2>Common questions</h2>
+          </div>
+
+          <div class="faq">
+            <details>
+              <summary>Do I need to create an account?</summary>
+              <p>
+                No. CivilCalc Pro doesn&rsquo;t have its own account system.
+                Your projects and calculations are saved on your device. Google
+                sign-in is only used if you choose to enable backup.
+              </p>
+            </details>
+            <details>
+              <summary>Does the app work without internet?</summary>
+              <p>
+                Yes. All calculators run on-device. Internet is only needed for
+                optional features - Drive backup, Google Play purchases, and ads
+                in the free tier.
+              </p>
+            </details>
+            <details>
+              <summary>What does the free tier include?</summary>
+              <p>
+                Most calculators are available in the free tier with occasional
+                interstitial ads, plus rewarded-ad unlocks for select advanced
+                tools. A paid upgrade removes ads and unlocks the full set
+                without the rewarded gate.
+              </p>
+            </details>
+            <details>
+              <summary>Where are my projects stored?</summary>
+              <p>
+                On your device. If you enable Google Drive backup, an
+                encrypted-at-rest copy is also written to the hidden
+                <span class="mono">drive.appdata</span> folder inside your own
+                Google account.
+              </p>
+            </details>
+            <details>
+              <summary>Can I export results to share with my team?</summary>
+              <p>
+                Yes. Use PDF for a clean report or CSV for spreadsheets. Exports
+                go through the standard Android share sheet, so you stay in
+                control of who receives them.
+              </p>
+            </details>
+            <details>
+              <summary>Is CivilCalc Pro a substitute for an engineer?</summary>
+              <p>
+                No. It&rsquo;s an estimation and workflow tool. Always verify
+                outputs against project drawings, local codes, manufacturer
+                guidance, and qualified professional review before procurement
+                or construction.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============== CTA BANNER =============== -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-banner">
+            <div>
+              <h2>Estimate faster on your next project.</h2>
+              <p>
+                Free to install. No CivilCalc Pro account. No surprises - the
+                free tier is genuinely useful, and the paid upgrade is a
+                one-time choice you can always change later through Google Play.
+              </p>
+            </div>
+            <div class="actions">
+              <a
+                class="play-badge"
+                href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                rel="noopener noreferrer"
+                aria-label="Get CivilCalc Pro on Google Play"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <defs>
+                    <linearGradient
+                      id="pbc-b"
+                      x1="2.6"
+                      y1="2.4"
+                      x2="11.6"
+                      y2="11.4"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#00A1FF" />
+                      <stop offset=".26" stop-color="#00BEFF" />
+                      <stop offset=".51" stop-color="#00D2FF" />
+                      <stop offset=".76" stop-color="#00DFFF" />
+                      <stop offset="1" stop-color="#00E3FF" />
+                    </linearGradient>
+                    <linearGradient
+                      id="pbc-y"
+                      x1="20.7"
+                      y1="12"
+                      x2="3.05"
+                      y2="12"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#FFE000" />
+                      <stop offset=".41" stop-color="#FFBD00" />
+                      <stop offset=".78" stop-color="#FFA500" />
+                      <stop offset="1" stop-color="#FF9C00" />
+                    </linearGradient>
+                    <linearGradient
+                      id="pbc-r"
+                      x1="15.6"
+                      y1="13.7"
+                      x2="3.85"
+                      y2="25.4"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#FF3A44" />
+                      <stop offset="1" stop-color="#C31162" />
+                    </linearGradient>
+                    <linearGradient
+                      id="pbc-g"
+                      x1="3.05"
+                      y1="-1.4"
+                      x2="8.4"
+                      y2="3.95"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stop-color="#32A071" />
+                      <stop offset=".07" stop-color="#2DA771" />
+                      <stop offset=".48" stop-color="#15CF74" />
+                      <stop offset=".8" stop-color="#06E775" />
+                      <stop offset="1" stop-color="#00F076" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill="url(#pbc-b)"
+                    d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.06.06L12.78 12l.05-.06z"
+                  />
+                  <path
+                    fill="url(#pbc-y)"
+                    d="m15.9 15.07-3.12-3.13v-.08l3.12-3.12.07.04 3.7 2.1c1.06.6 1.06 1.58 0 2.18l-3.7 2.1z"
+                  />
+                  <path
+                    fill="url(#pbc-r)"
+                    d="M15.97 15.03 12.78 12 3.6 21.18c.35.37.93.42 1.59.05l10.78-6.13z"
+                  />
+                  <path
+                    fill="url(#pbc-g)"
+                    d="m15.97 8.97-10.78-6.13c-.66-.38-1.24-.33-1.59.04L12.78 12z"
+                  />
+                </svg>
+                <span class="pb-text">
+                  <span class="pb-small">Get it on</span>
+                  <span class="pb-big">Google Play</span>
+                </span>
+              </a>
+              <a
+                class="button-ghost"
+                href="mailto:support@civilcalcpro.com?subject=CivilCalc%20Pro%20Support"
+                >Talk to us</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-card">
+            <div class="footer-brand">
+              <span class="brand-mark"
+                ><img
+                  src="/public/images/adaptive-icon.png"
+                  alt="CivilCalc Pro logo"
+              /></span>
+              <span>CivilCalc Pro</span>
+            </div>
+            <p>
+              Construction estimation app for Android. Calculators for concrete,
+              steel, RCC, masonry, finishes, formwork, area, volume, and unit
+              conversion - on-device by default.
+            </p>
+          </div>
+
+          <div class="footer-card">
+            <h2 class="section-title">Product</h2>
+            <ul class="list-tight">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#calculators">Calculators</a></li>
+              <li>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                  rel="noopener noreferrer"
+                  >Google Play</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-card">
+            <h2 class="section-title">Legal &amp; support</h2>
+            <ul class="list-tight">
+              <li><a href="/privacy/">Privacy Policy</a></li>
+              <li><a href="/terms/">Terms of Service</a></li>
+              <li>
+                <a href="mailto:support@civilcalcpro.com"
+                  >support@civilcalcpro.com</a
+                >
+              </li>
+              <li>
+                <a
+                  href="mailto:ideas@civilcalcpro.com?subject=CivilCalc%20Pro%20-%20Feature%20request"
+                  >ideas@civilcalcpro.com</a
+                >
+              </li>
+              <li><a href="/app-ads.txt">app-ads.txt</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="year">2026</span> CivilCalc Pro. All rights
+            reserved.
+          </p>
+          <div class="meta-links">
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
+            <a href="mailto:contact@civilcalcpro.com">Contact</a>
           </div>
         </div>
       </div>
-    </section>
+    </footer>
 
-  </main>
+    <script>
+      // Stamp the current year in the footer.
+      (function () {
+        var el = document.getElementById("year");
+        if (el) el.textContent = new Date().getFullYear();
+      })();
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-card">
-          <div class="footer-brand">
-            <span class="brand-mark"><img src="/public/images/adaptive-icon.png" alt="CivilCalc Pro logo"></span>
-            <span>CivilCalc Pro</span>
-          </div>
-          <p>Construction estimation app for Android. Calculators for concrete, steel, RCC, masonry, finishes, formwork, area, volume, and unit conversion - on-device by default.</p>
-        </div>
-
-        <div class="footer-card">
-          <h2 class="section-title">Product</h2>
-          <ul class="list-tight">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#calculators">Calculators</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro" rel="noopener noreferrer">Google Play</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-card">
-          <h2 class="section-title">Legal &amp; support</h2>
-          <ul class="list-tight">
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
-            <li><a href="mailto:support@civilcalcpro.com">support@civilcalcpro.com</a></li>
-            <li><a href="mailto:ideas@civilcalcpro.com?subject=CivilCalc%20Pro%20-%20Feature%20request">ideas@civilcalcpro.com</a></li>
-            <li><a href="/app-ads.txt">app-ads.txt</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; <span id="year">2026</span> CivilCalc Pro. All rights reserved.</p>
-        <div class="meta-links">
-          <a href="/privacy/">Privacy</a>
-          <a href="/terms/">Terms</a>
-          <a href="mailto:contact@civilcalcpro.com">Contact</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Stamp the current year in the footer.
-    (function () {
-      var el = document.getElementById('year');
-      if (el) el.textContent = new Date().getFullYear();
-    })();
-
-    // Site-wide theme controller: toggle persists, swaps screenshots,
-    // updates meta theme-color, keeps the toggle button aria-label honest.
-    (function () {
-      function apply(theme) {
-        var d = document.documentElement;
-        d.dataset.theme = theme;
-        var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', theme === 'light' ? '#fafbfc' : '#07080a');
-        document.querySelectorAll('[data-theme-toggle]').forEach(function (b) {
-          b.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
-        });
-        var folder = theme === 'light' ? 'Light' : 'Dark';
-        document.querySelectorAll('img[data-name]').forEach(function (img) {
-          img.src = '/public/images/screenshots/' + folder + '/' + img.dataset.name;
-        });
-        try { localStorage.setItem('ccp_theme', theme); } catch (_) {}
-      }
-      document.addEventListener('click', function (e) {
-        var btn = e.target.closest('[data-theme-toggle]');
-        if (!btn) return;
-        apply(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
-      });
-      // Initial sync (FOUC script set the theme; ensure screenshots + meta agree).
-      apply(document.documentElement.dataset.theme || 'dark');
-    })();
-
-    // Hero app-screenshot slideshow: auto-advance, click arrows, dots,
-    // swipe gestures on touch devices, and keyboard nav. Theme/folder is
-    // handled by the site-wide controller above.
-    (function () {
-      var root = document.getElementById('app-shots');
-      var dotsWrap = document.getElementById('shot-dots');
-      if (!root || !dotsWrap) return;
-
-      var shots = root.querySelectorAll('.shot');
-      var dots  = dotsWrap.querySelectorAll('button');
-      var prevBtn = root.querySelector('.shot-prev');
-      var nextBtn = root.querySelector('.shot-next');
-      if (!shots.length || !dots.length) return;
-
-      var index = 0;
-      var timer = null;
-      var INTERVAL = 4500;
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      function show(n) {
-        n = (n + shots.length) % shots.length;
-        if (n === index) return;
-        shots[index].classList.remove('is-active');
-        shots[index].setAttribute('aria-hidden', 'true');
-        dots[index].classList.remove('is-active');
-        dots[index].setAttribute('aria-selected', 'false');
-
-        index = n;
-
-        shots[index].classList.add('is-active');
-        shots[index].removeAttribute('aria-hidden');
-        dots[index].classList.add('is-active');
-        dots[index].setAttribute('aria-selected', 'true');
-      }
-      function next() { show(index + 1); }
-      function prev() { show(index - 1); }
-
-      function start() {
-        if (reduce || timer) return;
-        timer = window.setInterval(next, INTERVAL);
-      }
-      function stop() {
-        if (!timer) return;
-        window.clearInterval(timer);
-        timer = null;
-      }
-      function bump() { stop(); start(); }
-
-      dots.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var i = parseInt(btn.getAttribute('data-i'), 10);
-          if (!isNaN(i)) { show(i); bump(); }
-        });
-      });
-      if (prevBtn) prevBtn.addEventListener('click', function () { prev(); bump(); });
-      if (nextBtn) nextBtn.addEventListener('click', function () { next(); bump(); });
-
-      root.addEventListener('mouseenter', stop);
-      root.addEventListener('mouseleave', start);
-      root.addEventListener('focusin', stop);
-      root.addEventListener('focusout', start);
-
-      dotsWrap.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowRight') { next(); bump(); e.preventDefault(); }
-        else if (e.key === 'ArrowLeft') { prev(); bump(); e.preventDefault(); }
-      });
-
-      // Swipe / pointer-drag support (works for touch + mouse).
-      var stage = document.getElementById('shot-stage') || root;
-      var dragging = false;
-      var startX = 0, startY = 0, deltaX = 0;
-      var lockedAxis = null; // 'x' | 'y' | null
-      var SWIPE_THRESHOLD = 40;
-
-      function onPointerDown(e) {
-        if (e.target.closest('.shot-arrow, .shot-dots')) return;
-        dragging = true;
-        lockedAxis = null;
-        deltaX = 0;
-        startX = e.clientX;
-        startY = e.clientY;
-        stage.classList.add('is-dragging');
-        if (e.pointerId !== undefined && stage.setPointerCapture) {
-          try { stage.setPointerCapture(e.pointerId); } catch (_) {}
+      // Site-wide theme controller: toggle persists, swaps screenshots,
+      // updates meta theme-color, keeps the toggle button aria-label honest.
+      (function () {
+        function apply(theme) {
+          var d = document.documentElement;
+          d.dataset.theme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta)
+            meta.setAttribute(
+              "content",
+              theme === "light" ? "#fafbfc" : "#07080a",
+            );
+          document
+            .querySelectorAll("[data-theme-toggle]")
+            .forEach(function (b) {
+              b.setAttribute(
+                "aria-label",
+                theme === "light"
+                  ? "Switch to dark theme"
+                  : "Switch to light theme",
+              );
+            });
+          var folder = theme === "light" ? "Light" : "Dark";
+          document.querySelectorAll("img[data-name]").forEach(function (img) {
+            img.src =
+              "/public/images/screenshots/" + folder + "/" + img.dataset.name;
+          });
+          try {
+            localStorage.setItem("ccp_theme", theme);
+          } catch (_) {}
         }
-        stop();
-      }
-      function onPointerMove(e) {
-        if (!dragging) return;
-        var dx = e.clientX - startX;
-        var dy = e.clientY - startY;
-        if (lockedAxis === null) {
-          if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
-            lockedAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        document.addEventListener("click", function (e) {
+          var btn = e.target.closest("[data-theme-toggle]");
+          if (!btn) return;
+          apply(
+            document.documentElement.dataset.theme === "light"
+              ? "dark"
+              : "light",
+          );
+        });
+        // Initial sync (FOUC script set the theme; ensure screenshots + meta agree).
+        apply(document.documentElement.dataset.theme || "dark");
+      })();
+
+      // Hero app-screenshot slideshow: auto-advance, click arrows, dots,
+      // swipe gestures on touch devices, and keyboard nav. Theme/folder is
+      // handled by the site-wide controller above.
+      (function () {
+        var root = document.getElementById("app-shots");
+        var dotsWrap = document.getElementById("shot-dots");
+        if (!root || !dotsWrap) return;
+
+        var shots = root.querySelectorAll(".shot");
+        var dots = dotsWrap.querySelectorAll("button");
+        var prevBtn = root.querySelector(".shot-prev");
+        var nextBtn = root.querySelector(".shot-next");
+        if (!shots.length || !dots.length) return;
+
+        var index = 0;
+        var timer = null;
+        var INTERVAL = 4500;
+        var reduce =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function show(n) {
+          n = (n + shots.length) % shots.length;
+          if (n === index) return;
+          shots[index].classList.remove("is-active");
+          shots[index].setAttribute("aria-hidden", "true");
+          dots[index].classList.remove("is-active");
+          dots[index].setAttribute("aria-selected", "false");
+
+          index = n;
+
+          shots[index].classList.add("is-active");
+          shots[index].removeAttribute("aria-hidden");
+          dots[index].classList.add("is-active");
+          dots[index].setAttribute("aria-selected", "true");
+        }
+        function next() {
+          show(index + 1);
+        }
+        function prev() {
+          show(index - 1);
+        }
+
+        function start() {
+          if (reduce || timer) return;
+          timer = window.setInterval(next, INTERVAL);
+        }
+        function stop() {
+          if (!timer) return;
+          window.clearInterval(timer);
+          timer = null;
+        }
+        function bump() {
+          stop();
+          start();
+        }
+
+        dots.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var i = parseInt(btn.getAttribute("data-i"), 10);
+            if (!isNaN(i)) {
+              show(i);
+              bump();
+            }
+          });
+        });
+        if (prevBtn)
+          prevBtn.addEventListener("click", function () {
+            prev();
+            bump();
+          });
+        if (nextBtn)
+          nextBtn.addEventListener("click", function () {
+            next();
+            bump();
+          });
+
+        root.addEventListener("mouseenter", stop);
+        root.addEventListener("mouseleave", start);
+        root.addEventListener("focusin", stop);
+        root.addEventListener("focusout", start);
+
+        dotsWrap.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") {
+            next();
+            bump();
+            e.preventDefault();
+          } else if (e.key === "ArrowLeft") {
+            prev();
+            bump();
+            e.preventDefault();
+          }
+        });
+
+        // Swipe / pointer-drag support (works for touch + mouse).
+        var stage = document.getElementById("shot-stage") || root;
+        var dragging = false;
+        var startX = 0,
+          startY = 0,
+          deltaX = 0;
+        var lockedAxis = null; // 'x' | 'y' | null
+        var SWIPE_THRESHOLD = 40;
+
+        function onPointerDown(e) {
+          if (e.target.closest(".shot-arrow, .shot-dots")) return;
+          dragging = true;
+          lockedAxis = null;
+          deltaX = 0;
+          startX = e.clientX;
+          startY = e.clientY;
+          stage.classList.add("is-dragging");
+          if (e.pointerId !== undefined && stage.setPointerCapture) {
+            try {
+              stage.setPointerCapture(e.pointerId);
+            } catch (_) {}
+          }
+          stop();
+        }
+        function onPointerMove(e) {
+          if (!dragging) return;
+          var dx = e.clientX - startX;
+          var dy = e.clientY - startY;
+          if (lockedAxis === null) {
+            if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
+              lockedAxis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+            }
+          }
+          if (lockedAxis === "x") {
+            deltaX = dx;
+            if (e.preventDefault) e.preventDefault();
           }
         }
-        if (lockedAxis === 'x') {
-          deltaX = dx;
-          if (e.preventDefault) e.preventDefault();
+        function onPointerUp() {
+          if (!dragging) return;
+          dragging = false;
+          stage.classList.remove("is-dragging");
+          if (lockedAxis === "x") {
+            if (deltaX <= -SWIPE_THRESHOLD) next();
+            else if (deltaX >= SWIPE_THRESHOLD) prev();
+          }
+          deltaX = 0;
+          lockedAxis = null;
+          start();
         }
-      }
-      function onPointerUp() {
-        if (!dragging) return;
-        dragging = false;
-        stage.classList.remove('is-dragging');
-        if (lockedAxis === 'x') {
-          if (deltaX <= -SWIPE_THRESHOLD) next();
-          else if (deltaX >= SWIPE_THRESHOLD) prev();
+
+        if (window.PointerEvent) {
+          stage.addEventListener("pointerdown", onPointerDown);
+          stage.addEventListener("pointermove", onPointerMove);
+          stage.addEventListener("pointerup", onPointerUp);
+          stage.addEventListener("pointercancel", onPointerUp);
+          stage.addEventListener("pointerleave", onPointerUp);
+        } else {
+          stage.addEventListener(
+            "touchstart",
+            function (e) {
+              var t = e.changedTouches[0];
+              onPointerDown({
+                clientX: t.clientX,
+                clientY: t.clientY,
+                target: e.target,
+              });
+            },
+            { passive: true },
+          );
+          stage.addEventListener(
+            "touchmove",
+            function (e) {
+              var t = e.changedTouches[0];
+              onPointerMove({
+                clientX: t.clientX,
+                clientY: t.clientY,
+                preventDefault: function () {
+                  try {
+                    e.preventDefault();
+                  } catch (_) {}
+                },
+              });
+            },
+            { passive: false },
+          );
+          stage.addEventListener("touchend", onPointerUp);
+          stage.addEventListener("touchcancel", onPointerUp);
         }
-        deltaX = 0;
-        lockedAxis = null;
-        start();
-      }
 
-      if (window.PointerEvent) {
-        stage.addEventListener('pointerdown', onPointerDown);
-        stage.addEventListener('pointermove', onPointerMove);
-        stage.addEventListener('pointerup', onPointerUp);
-        stage.addEventListener('pointercancel', onPointerUp);
-        stage.addEventListener('pointerleave', onPointerUp);
-      } else {
-        stage.addEventListener('touchstart', function (e) {
-          var t = e.changedTouches[0];
-          onPointerDown({ clientX: t.clientX, clientY: t.clientY, target: e.target });
-        }, { passive: true });
-        stage.addEventListener('touchmove', function (e) {
-          var t = e.changedTouches[0];
-          onPointerMove({ clientX: t.clientX, clientY: t.clientY,
-            preventDefault: function () { try { e.preventDefault(); } catch (_) {} } });
-        }, { passive: false });
-        stage.addEventListener('touchend', onPointerUp);
-        stage.addEventListener('touchcancel', onPointerUp);
-      }
+        // Only auto-rotate when the carousel is visible in the viewport.
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) start();
+                else stop();
+              });
+            },
+            { threshold: 0.25 },
+          );
+          io.observe(root);
+        } else {
+          start();
+        }
+      })();
+    </script>
 
-      // Only auto-rotate when the carousel is visible in the viewport.
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) start(); else stop();
-          });
-        }, { threshold: 0.25 });
-        io.observe(root);
-      } else {
-        start();
-      }
-    })();
-  </script>
-</body>
+    <script
+      defer
+      src="https://portalstage.catchpoint.com/jp/203816/latest/InitialLoadScript.js"
+    ></script>
+  </body>
 </html>
