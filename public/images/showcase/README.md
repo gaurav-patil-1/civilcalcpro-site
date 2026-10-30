@@ -26,5 +26,28 @@ Do not replace these files with unframed device captures. The reproducible
 frame compositor and raw Light/Dark captures are in the sibling app checkout:
 `civil-calc-pro/output/website-showcase/build-showcase.cjs`.
 
-When refreshing the assets, update the `showcaseVersion` cache key and initial
+When refreshing the assets, update the `version` cache key in `assets/showcase.js` and initial
 image URLs in `index.html` so returning visitors receive the new images.
+
+## Fast delivery assets
+
+Serve the responsive WebP derivatives instead of the PNG sources:
+
+- `<original-stem>-550.webp` for smaller display sizes.
+- `<original-stem>-1100.webp` for larger or high-density displays.
+
+Both sizes preserve the transparent phone frame and screenshot aspect ratio.
+The 550px version rounds the proportional height to 1138px; the full-size
+version is 1100 × 2275px. Encoding uses quality 88 and lossless alpha.
+The PNGs remain the source of truth for future screenshot updates.
+
+Regenerate all 36 derivatives with Node and Sharp:
+
+```sh
+npm install --no-save --package-lock=false sharp
+node scripts/optimize-showcase.cjs
+```
+
+Alternatively, set `SHARP_MODULE` to an existing Sharp installation when running
+the script. After rebuilding, update the website's image cache version so returning
+visitors receive the new assets.

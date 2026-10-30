@@ -1066,7 +1066,21 @@ summary:focus-visible,
 
 .screen-window img.is-changing {
   opacity: 0;
-  transform: translateY(0.7rem);
+  transition: none;
+}
+
+.workflow-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.workflow-status[hidden] {
+  display: none;
 }
 
 .board-scale {
