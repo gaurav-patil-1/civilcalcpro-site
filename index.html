@@ -248,7 +248,7 @@
 
             <figure class="device device--left" aria-hidden="true">
               <img
-                src="/public/images/showcase/Light/scientific-calculator.png"
+                src="/public/images/showcase/Light/scientific-calculator.png?v=m3-20261030"
                 data-showcase="scientific-calculator.png"
                 width="1100"
                 height="2275"
@@ -258,7 +258,7 @@
             </figure>
             <figure class="device device--right" aria-hidden="true">
               <img
-                src="/public/images/showcase/Light/figma-replace-project-summary.png"
+                src="/public/images/showcase/Light/figma-replace-project-summary.png?v=m3-20261030"
                 data-showcase="figma-replace-project-summary.png"
                 width="1100"
                 height="2275"
@@ -268,11 +268,11 @@
             </figure>
             <figure class="device device--main">
               <img
-                src="/public/images/showcase/Light/home-calculators.png"
+                src="/public/images/showcase/Light/home-calculators.png?v=m3-20261030"
                 data-showcase="home-calculators.png"
                 width="1100"
                 height="2275"
-                alt="CivilCalc Pro calculator library with Quick Estimate and construction calculator cards"
+                alt="CivilCalc Pro calculator library with construction categories and material illustrations"
                 loading="eager"
                 fetchpriority="high"
               />
@@ -380,7 +380,7 @@
                 type="button"
                 class="workflow-step reveal"
                 data-showcase="figma-calc-screen.png"
-                data-alt="CivilCalc Pro scientific calculator"
+                data-alt="CivilCalc Pro formwork beam calculator with dimension inputs and a shuttering diagram"
                 data-figure="FIG 03 / CALCULATE"
                 aria-pressed="false"
               >
@@ -414,7 +414,7 @@
                 type="button"
                 class="workflow-step reveal"
                 data-showcase="figma-replace-boq-export.png"
-                data-alt="CivilCalc Pro bill of quantities with PDF and CSV export"
+                data-alt="CivilCalc Pro bill of quantities with material costs and export action"
                 data-figure="FIG 05 / DELIVER"
                 aria-pressed="false"
               >
@@ -436,7 +436,7 @@
               <div class="screen-window">
                 <img
                   id="workflow-screen"
-                  src="/public/images/showcase/Light/rcc-library.png"
+                  src="/public/images/showcase/Light/rcc-library.png?v=m3-20261030"
                   data-showcase="rcc-library.png"
                   width="1100"
                   height="2275"
@@ -562,7 +562,7 @@
           <figure class="tour-card tour-card--tall">
             <div class="tour-image">
               <img
-                src="/public/images/showcase/Light/history.png"
+                src="/public/images/showcase/Light/history.png?v=m3-20261030"
                 data-showcase="history.png"
                 width="1100"
                 height="2275"
@@ -575,7 +575,7 @@
           <figure class="tour-card">
             <div class="tour-image">
               <img
-                src="/public/images/showcase/Light/unit-converter.png"
+                src="/public/images/showcase/Light/unit-converter.png?v=m3-20261030"
                 data-showcase="unit-converter.png"
                 width="1100"
                 height="2275"
@@ -588,11 +588,11 @@
           <figure class="tour-card tour-card--wide">
             <div class="tour-image tour-image--summary">
               <img
-                src="/public/images/showcase/Light/figma-replace-project-summary.png"
+                src="/public/images/showcase/Light/figma-replace-project-summary.png?v=m3-20261030"
                 data-showcase="figma-replace-project-summary.png"
                 width="1100"
                 height="2275"
-                alt="Placeholder phone frame for the CivilCalc Pro project material summary"
+                alt="CivilCalc Pro project material summary with quantities and saved costs"
                 loading="lazy"
               />
             </div>
@@ -601,11 +601,11 @@
           <figure class="tour-card">
             <div class="tour-image tour-image--boq">
               <img
-                src="/public/images/showcase/Light/figma-replace-boq-export.png"
+                src="/public/images/showcase/Light/figma-replace-boq-export.png?v=m3-20261030"
                 data-showcase="figma-replace-boq-export.png"
                 width="1100"
                 height="2275"
-                alt="Placeholder phone frame for CivilCalc Pro bill of quantities and export actions"
+                alt="CivilCalc Pro bill of quantities with material costs and export action"
                 loading="lazy"
               />
             </div>
@@ -805,6 +805,7 @@
     <script>
       (function () {
         var root = document.documentElement;
+        var showcaseVersion = "m3-20261030";
         var year = document.getElementById("year");
         if (year) year.textContent = new Date().getFullYear();
 
@@ -821,7 +822,9 @@
                 "/public/images/showcase/" +
                 showcaseFolder +
                 "/" +
-                image.dataset.showcase;
+                image.dataset.showcase +
+                "?v=" +
+                showcaseVersion;
             });
           document
             .querySelectorAll("[data-theme-toggle]")
@@ -863,7 +866,9 @@
               "/public/images/showcase/" +
               showcaseFolder +
               "/" +
-              step.dataset.showcase;
+              step.dataset.showcase +
+              "?v=" +
+              showcaseVersion;
             workflowImage.alt = step.dataset.alt;
             if (workflowFigure)
               workflowFigure.textContent = step.dataset.figure;
