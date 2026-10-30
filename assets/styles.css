@@ -690,6 +690,10 @@ summary:focus-visible,
   height: auto;
 }
 
+.showcase-image {
+  aspect-ratio: 1100 / 2275;
+}
+
 .device--main {
   z-index: 3;
   top: 4rem;
@@ -1059,9 +1063,6 @@ summary:focus-visible,
 .screen-window img {
   width: 100%;
   height: auto;
-  transition:
-    opacity 240ms ease,
-    transform 240ms var(--ease);
 }
 
 .screen-window img.is-changing {

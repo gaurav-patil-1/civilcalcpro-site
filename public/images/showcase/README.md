@@ -27,7 +27,10 @@ frame compositor and raw Light/Dark captures are in the sibling app checkout:
 `civil-calc-pro/output/website-showcase/build-showcase.cjs`.
 
 When refreshing the assets, update the `version` cache key in `assets/showcase.js` and initial
-image URLs in `index.html` so returning visitors receive the new images.
+image URLs in the `index.html` no-JavaScript fallbacks so returning visitors receive the new images.
+The enhanced images intentionally start without `src`: the script selects the saved theme
+and measures each image's layout width before requesting an asset. Do not add a Light
+source or a loaded placeholder: these cause wrong-theme or premature lazy-image downloads.
 
 ## Fast delivery assets
 

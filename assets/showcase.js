@@ -19,12 +19,15 @@
 
   function setSources(image, theme) {
     var file = image.dataset.showcase;
+    // Use layout width, not a rotated device's bounding box or one size for
+    // every screenshot. Keep the browser and workflow cache on the same asset.
+    image.sizes = (image.clientWidth || 288) + 'px';
     image.srcset = url(file, 550, theme) + ' 550w, ' + url(file, 1100, theme) + ' 1100w';
     image.src = url(file, 1100, theme);
   }
 
   function workflowWidth() {
-    var width = workflowImage.getBoundingClientRect().width || 288;
+    var width = workflowImage.clientWidth || 288;
     return width * (window.devicePixelRatio || 1) <= 550 ? 550 : 1100;
   }
 
@@ -41,14 +44,17 @@
       image.onload = function () {
         // Decode before revealing the image, rather than showing the previous step
         // while the browser is still downloading/decoding the new screenshot.
-        (image.decode ? image.decode() : Promise.resolve()).then(resolve, reject);
+        (image.decode ? image.decode() : Promise.resolve()).then(function () {
+          cache.get(source).ready = true;
+          resolve();
+        }, reject);
       };
       image.onerror = function () { reject(new Error('Preview failed to load')); };
     }).catch(function (error) {
       cache.delete(source); // A click can retry a failed request.
       throw error;
     });
-    cache.set(source, { image: image, promise: promise });
+    cache.set(source, { image: image, promise: promise, ready: false });
     image.src = source;
     return promise;
   }
@@ -74,11 +80,7 @@
       item.classList.toggle('is-active', active);
       item.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
-    workflowImage.classList.add('is-changing');
-    workflowWindow.setAttribute('aria-busy', 'true');
-    workflowStatus.textContent = 'Loading preview…';
-    workflowStatus.hidden = false;
-    prepare(source, 'high').then(function () {
+    function reveal() {
       // Rapid hover, keyboard focus, or theme changes must never reveal an old request.
       if (id !== requestId || theme !== root.dataset.theme) return;
       workflowImage.removeAttribute('srcset');
@@ -89,11 +91,21 @@
       workflowImage.classList.remove('is-changing');
       workflowStatus.hidden = true;
       workflowWindow.setAttribute('aria-busy', 'false');
-    }).catch(function () {
-      if (id !== requestId || theme !== root.dataset.theme) return;
-      workflowStatus.textContent = 'Preview unavailable. Select this step to retry.';
-      workflowWindow.setAttribute('aria-busy', 'false');
-    });
+    }
+    var cached = cache.get(source);
+    if (cached && cached.ready) {
+      reveal();
+    } else {
+      workflowImage.classList.add('is-changing');
+      workflowWindow.setAttribute('aria-busy', 'true');
+      workflowStatus.textContent = 'Loading preview…';
+      workflowStatus.hidden = false;
+      prepare(source, 'high').then(reveal).catch(function () {
+        if (id !== requestId || theme !== root.dataset.theme) return;
+        workflowStatus.textContent = 'Preview unavailable. Select this step to retry.';
+        workflowWindow.setAttribute('aria-busy', 'false');
+      });
+    }
     warmWorkflow();
   }
 
@@ -126,6 +138,20 @@
     });
   });
   applyTheme(root.dataset.theme || 'light');
+  // Re-evaluate responsive candidates when the layout changes (including
+  // device rotation), without downloading another theme or hidden preview.
+  if ('ResizeObserver' in window) {
+    var sizesObserver = new ResizeObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.target !== workflowImage && entry.target.clientWidth) {
+          entry.target.sizes = entry.target.clientWidth + 'px';
+        }
+      });
+    });
+    document.querySelectorAll('img[data-showcase]').forEach(function (image) {
+      sizesObserver.observe(image);
+    });
+  }
   var workflow = document.getElementById('workflow');
   if (workflow && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {

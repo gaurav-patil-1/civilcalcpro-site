@@ -35,6 +35,7 @@ function element(dataset = {}) {
 function setup({ theme = 'light', dpr = 1, width = 288, hover = true, observer = true } = {}) {
   const root = element({ theme });
   const image = element({ showcase: files[0] });
+  image.clientWidth = width;
   image.parentElement = element();
   image.getBoundingClientRect = () => ({ width });
   const figure = element();
@@ -43,6 +44,7 @@ function setup({ theme = 'light', dpr = 1, width = 288, hover = true, observer =
   const toggle = element();
   toggle.closest = (selector) => selector === '[data-theme-toggle]' ? toggle : null;
   const hero = element({ showcase: 'home-calculators.png' });
+  hero.clientWidth = 257;
   const steps = files.map((showcase, index) => element({ showcase, alt: `Screen ${index}`, figure: `Figure ${index}` }));
   const document = element();
   document.documentElement = root;
@@ -226,5 +228,28 @@ test('without IntersectionObserver the window load event warms previews', () => 
   const h = setup({ observer: false });
   assert.equal(h.requests.length, 0);
   h.window.emit('load');
+  assert.equal(h.requests.length, 4);
+});
+
+test('responsive sources use each image layout width, including the initial workflow preview', () => {
+  const h = setup({ width: 263, dpr: 2, theme: 'dark' });
+  assert.equal(h.hero.sizes, '257px');
+  assert.equal(h.image.sizes, '263px');
+  assert.match(h.hero.srcset, /\/Dark\/home-calculators-550\.webp/);
+  h.observers[0].trigger(true);
+  assert.ok(h.requests.every((request) => request.src.includes('-550.webp')));
+});
+
+test('decoded cached previews switch synchronously without a loading flash or another request', async () => {
+  const h = setup();
+  h.observers[0].trigger(true);
+  h.requests.forEach((request) => request.finish());
+  await flush();
+  h.steps[2].emit('focus');
+  assert.equal(h.image.src, h.request(2).src);
+  assert.equal(h.status.hidden, true);
+  assert.equal(h.image.classList.contains('is-changing'), false);
+  h.steps[2].emit('click');
+  assert.equal(h.status.hidden, true);
   assert.equal(h.requests.length, 4);
 });
