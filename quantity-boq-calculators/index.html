@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        var root = document.documentElement;
+        try {
+          var saved = localStorage.getItem("ccp_theme");
+          if (saved !== "light" && saved !== "dark") {
+            saved = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          root.dataset.theme = saved;
+        } catch (_) {
+          root.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>
+      BOQ &amp; Quantity Calculator - Brickwork, Plaster, Tiles, Paint,
+      Earthwork &amp; Formwork | CivilCalc Pro
+    </title>
+    <meta
+      name="description"
+      content="Estimate clay bricks, AAC blocks, mortar cement &amp; sand, plastering, wall putty, paint, tile &amp; marble flooring, roofing, excavation earthwork, shuttering area, and project BOQ PDF/CSV reports in CivilCalc Pro."
+    />
+    <meta
+      name="robots"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#f1efe7" />
+    <meta name="application-name" content="CivilCalc Pro" />
+    <meta name="apple-mobile-web-app-title" content="CivilCalc Pro" />
+    <meta name="author" content="Lee Studios" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="canonical"
+      href="https://civilcalcpro.com/quantity-boq-calculators/"
+    />
+
+    <meta property="og:site_name" content="CivilCalc Pro" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="BOQ &amp; Quantity Calculator - Brickwork, Plaster, Tiles, Paint, Earthwork &amp; Formwork | CivilCalc Pro"
+    />
+    <meta
+      property="og:description"
+      content="Estimate clay bricks, AAC blocks, mortar cement &amp; sand, plastering, wall putty, paint, tile &amp; marble flooring, roofing, excavation earthwork, shuttering area, and project BOQ PDF/CSV reports in CivilCalc Pro."
+    />
+    <meta
+      property="og:url"
+      content="https://civilcalcpro.com/quantity-boq-calculators/"
+    />
+    <meta
+      property="og:image"
+      content="https://civilcalcpro.com/og-banner.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="CivilCalc Pro - Quantity, Masonry &amp; BOQ"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="BOQ &amp; Quantity Calculator - Brickwork, Plaster, Tiles, Paint, Earthwork &amp; Formwork | CivilCalc Pro"
+    />
+    <meta
+      name="twitter:description"
+      content="Estimate clay bricks, AAC blocks, mortar cement &amp; sand, plastering, wall putty, paint, tile &amp; marble flooring, roofing, excavation earthwork, shuttering area, and project BOQ PDF/CSV reports in CivilCalc Pro."
+    />
+    <meta
+      name="twitter:image"
+      content="https://civilcalcpro.com/og-banner.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=DM+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap"
+    />
+    <link rel="stylesheet" href="/assets/styles.css?v=seo-20261118" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "CivilCalc Pro",
+            "item": "https://civilcalcpro.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://civilcalcpro.com/calculators/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Quantity, Masonry & BOQ",
+            "item": "https://civilcalcpro.com/quantity-boq-calculators/"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Brickwork, Plaster, Finishes, Earthwork & BOQ App",
+        "description": "Estimate clay bricks, AAC blocks, mortar cement & sand, plastering, wall putty, paint, tile & marble flooring, roofing, excavation earthwork, shuttering area, and project BOQ PDF/CSV reports in CivilCalc Pro.",
+        "url": "https://civilcalcpro.com/quantity-boq-calculators/",
+        "numberOfItems": 9,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Clay Brick, Fly-Ash & AAC / Hollow Block Masonry",
+            "description": "Straight walls, L-walls, C-walls, rectangular inspection chambers, arched-door walls, and volume-based brickwork with mortar ratio (1:4, 1:5, 1:6), cement bags, and sand."
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Internal, External & Ceiling Plaster Calculators",
+            "description": "12 mm, 15 mm, 20 mm, or custom plaster thickness with uneven-surface allowance, wastage, dry mortar factor, cement bags, and plaster sand volume."
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Floor & Wall Tiles, Marble, Granite & Paver Blocks",
+            "description": "Tile count, box count, skirting length, bedding mortar or tile adhesive bags, grout quantity, and wastage for rooms, bathrooms, stairs, and outdoor paving."
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Wall Putty, Primer & Interior/Exterior Paint",
+            "description": "Multi-coat coverage calculators for wall putty (kg), primer (litres), emulsion/weatherproof paint, and texture finishes with door/window deductions."
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Pit, Trench, Sloped Excavation & Backfill Earthwork",
+            "description": "Cut volume, battered/sloped trench excavation, soil swell/bulking factor for truck trips, compacted backfill volume, sand filling, and boulder soling."
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Column, Beam, Slab, Footing & Wall Formwork (Shuttering)",
+            "description": "Contact shuttering area (m² / ft²), plywood sheet counts, battens/runners, props, shuttering oil, and tie-rod estimates for RCC members."
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Underground Sump, Overhead Tank, Septic & Swimming Pools",
+            "description": "Capacity in litres/gallons plus wall, base slab, cover slab, plaster, and waterproofing material quantities for rectangular and circular tanks."
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Gable, Hip, Shed & Corrugated Sheet Roofing",
+            "description": "True pitched roof slope area from plan dimensions and pitch/rise, roofing sheet overlap counts, ridge caps, purlins, and truss geometry."
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "Multi-Item Project BOQ, Cost Summary & PDF/CSV Export",
+            "description": "Organize every saved calculation by project, attach material and labour unit rates, review consolidated quantities (total bags, sand, steel, bricks), and share clean PDF or CSV reports."
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I customize brick dimensions and mortar joint thickness?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Whether your region uses modular bricks (190 × 90 × 90 mm), traditional bricks (230 × 110 × 75 mm), US modular bricks, or 600 × 200 mm AAC blocks, you can set exact unit dimensions and joint thickness."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What formats can CivilCalc Pro export for client or procurement sharing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CivilCalc Pro exports formatted PDF project & BOQ reports for clients/supervisors as well as structured CSV files that open directly in Excel or Google Sheets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does project data stay private on my phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Saved projects, rates, and BOQs are stored locally on your device by default, with optional user-controlled backup to your own Google Drive."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="/" aria-label="CivilCalc Pro home">
+          <span class="brand-mark">
+            <img
+              src="/public/images/adaptive-icon.png"
+              width="128"
+              height="128"
+              alt="CivilCalc Pro"
+            />
+          </span>
+          <span class="brand-name">CivilCalc Pro</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="/calculators/">Calculators</a>
+          <a href="/concrete-calculators/">Concrete</a>
+          <a href="/rcc-steel-calculators/">Steel &amp; RCC</a>
+          <a class="active" href="/quantity-boq-calculators/"
+            >BOQ &amp; Quantity</a
+          >
+          <a href="/electrical-calculators/">Electrical</a>
+          <a href="/area-volume-conversion/">Area &amp; Units</a>
+        </nav>
+
+        <div class="nav-right">
+          <a
+            class="header-cta"
+            href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+            rel="noopener noreferrer"
+          >
+            Get the app <span aria-hidden="true">↗</span>
+          </a>
+          <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+            aria-label="Switch to dark theme"
+            title="Toggle color theme"
+          >
+            <span class="theme-symbol" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hub-hero">
+        <div class="container">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="/">CivilCalc Pro</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href="/calculators/">Calculators</a></li>
+              <li aria-hidden="true">/</li>
+              <li>Quantity, Masonry &amp; BOQ</li>
+            </ol>
+          </nav>
+
+          <div class="hub-hero-inner">
+            <div>
+              <p class="coordinate">
+                QUANTITY SURVEYING &amp; BOQ · 145+ TOOLS
+              </p>
+              <h1>
+                Brickwork, Plaster, Finishes, Earthwork &amp; BOQ App
+                <em>Material take-offs to PDF &amp; CSV reports.</em>
+              </h1>
+              <p class="lead">
+                Turn room, wall, and trench dimensions into exact material
+                purchase lists and priced Bills of Quantities-covering masonry,
+                interior finishes, earthwork, shuttering, tanks, and site
+                infrastructure.
+              </p>
+              <div class="hero-actions" style="margin-top: 2rem">
+                <a
+                  class="store-button"
+                  href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                  rel="noopener noreferrer"
+                  aria-label="Get CivilCalc Pro on Google Play"
+                >
+                  <span class="play-mark" aria-hidden="true"></span>
+                  <span>
+                    <small>Download on</small>
+                    <strong>Google Play</strong>
+                  </span>
+                </a>
+                <a class="button-secondary" href="/">
+                  Back to CivilCalc Pro Overview
+                </a>
+              </div>
+            </div>
+
+            <aside class="hub-aside" aria-label="Field capability summary">
+              <h2>From Single Wall to Full Project BOQ</h2>
+              <p>
+                Deduct doors, windows, and lintels automatically; apply local
+                brick dimensions, mortar joint thickness, and wastage; then
+                export itemized PDF or CSV schedules.
+              </p>
+              <ul class="chip-row">
+                <li class="chip">Offline Android App</li>
+                <li class="chip">mm · m · ft · ft/in</li>
+                <li class="chip">PDF &amp; CSV BOQ</li>
+                <li class="chip">25 Languages</li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="hub-section"
+        id="masonry-plaster"
+        aria-labelledby="masonry-plaster-title"
+      >
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">WALLS, MORTAR &amp; SURFACE FINISHES</p>
+            <h2 id="masonry-plaster-title">
+              Masonry, plastering, flooring &amp; paint calculators.
+            </h2>
+            <p>
+              Accurate unit counts and dry mortar breakdowns with full support
+              for custom brick/block sizes and opening deductions.
+            </p>
+          </div>
+
+          <div class="calc-grid">
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">MSN / 01</span>
+                <h3>Clay Brick, Fly-Ash &amp; AAC / Hollow Block Masonry</h3>
+                <p>
+                  Straight walls, L-walls, C-walls, rectangular inspection
+                  chambers, arched-door walls, and volume-based brickwork with
+                  mortar ratio (1:4, 1:5, 1:6), cement bags, and sand.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Brick &amp; AAC Block</li>
+                <li class="chip">Door/Window Deduction</li>
+                <li class="chip">Mortar Cement &amp; Sand</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">PLS / 02</span>
+                <h3>Internal, External &amp; Ceiling Plaster Calculators</h3>
+                <p>
+                  12 mm, 15 mm, 20 mm, or custom plaster thickness with
+                  uneven-surface allowance, wastage, dry mortar factor, cement
+                  bags, and plaster sand volume.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">12 mm / 15 mm / 20 mm</li>
+                <li class="chip">Cement &amp; Plaster Sand</li>
+                <li class="chip">Opening Deductions</li>
+              </ul>
+            </article>
+            <article class="calc-card" id="flooring-paint">
+              <div>
+                <span class="calc-card-code">FLR / 03</span>
+                <h3>
+                  Floor &amp; Wall Tiles, Marble, Granite &amp; Paver Blocks
+                </h3>
+                <p>
+                  Tile count, box count, skirting length, bedding mortar or tile
+                  adhesive bags, grout quantity, and wastage for rooms,
+                  bathrooms, stairs, and outdoor paving.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Tiles &amp; Skirting</li>
+                <li class="chip">Adhesive &amp; Grout</li>
+                <li class="chip">Marble / Pavers</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">PNT / 04</span>
+                <h3>Wall Putty, Primer &amp; Interior/Exterior Paint</h3>
+                <p>
+                  Multi-coat coverage calculators for wall putty (kg), primer
+                  (litres), emulsion/weatherproof paint, and texture finishes
+                  with door/window deductions.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Putty · Primer · Paint</li>
+                <li class="chip">Multi-Coat Coverage</li>
+                <li class="chip">Net Paintable Area</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="hub-section"
+        id="earthwork-formwork"
+        aria-labelledby="earthwork-formwork-title"
+      >
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">SITEWORK, SHUTTERING &amp; PROJECT BOQ</p>
+            <h2 id="earthwork-formwork-title">
+              Earthwork, formwork, tanks &amp; BOQ reporting.
+            </h2>
+            <p>
+              Plan excavation equipment trips, shuttering plywood sheets,
+              waterproofing areas, and consolidated client quotations.
+            </p>
+          </div>
+
+          <div class="calc-grid">
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">ETH / 05</span>
+                <h3>Pit, Trench, Sloped Excavation &amp; Backfill Earthwork</h3>
+                <p>
+                  Cut volume, battered/sloped trench excavation, soil
+                  swell/bulking factor for truck trips, compacted backfill
+                  volume, sand filling, and boulder soling.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Sloped Excavation</li>
+                <li class="chip">Swell &amp; Bulking</li>
+                <li class="chip">Backfill &amp; Sand Fill</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">FMW / 06</span>
+                <h3>
+                  Column, Beam, Slab, Footing &amp; Wall Formwork (Shuttering)
+                </h3>
+                <p>
+                  Contact shuttering area (m² / ft²), plywood sheet counts,
+                  battens/runners, props, shuttering oil, and tie-rod estimates
+                  for RCC members.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Contact Area m²/ft²</li>
+                <li class="chip">Plywood &amp; Props</li>
+                <li class="chip">Beam/Column/Slab</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">TNK / 07</span>
+                <h3>
+                  Underground Sump, Overhead Tank, Septic &amp; Swimming Pools
+                </h3>
+                <p>
+                  Capacity in litres/gallons plus wall, base slab, cover slab,
+                  plaster, and waterproofing material quantities for rectangular
+                  and circular tanks.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Capacity in Litres</li>
+                <li class="chip">Sump &amp; Overhead Tank</li>
+                <li class="chip">Swimming Pools</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">ROF / 08</span>
+                <h3>Gable, Hip, Shed &amp; Corrugated Sheet Roofing</h3>
+                <p>
+                  True pitched roof slope area from plan dimensions and
+                  pitch/rise, roofing sheet overlap counts, ridge caps, purlins,
+                  and truss geometry.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Gable &amp; Hip Roof</li>
+                <li class="chip">Slope Factor</li>
+                <li class="chip">Sheet &amp; Purlin Count</li>
+              </ul>
+            </article>
+            <article class="calc-card" id="boq-reports">
+              <div>
+                <span class="calc-card-code">BOQ / 09</span>
+                <h3>
+                  Multi-Item Project BOQ, Cost Summary &amp; PDF/CSV Export
+                </h3>
+                <p>
+                  Organize every saved calculation by project, attach material
+                  and labour unit rates, review consolidated quantities (total
+                  bags, sand, steel, bricks), and share clean PDF or CSV
+                  reports.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Consolidated Totals</li>
+                <li class="chip">PDF Report Branding</li>
+                <li class="chip">Spreadsheet CSV</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section section" aria-labelledby="hub-faq-title">
+        <div class="container faq-grid">
+          <div class="faq-heading">
+            <p class="coordinate">COMMON QUESTIONS</p>
+            <h2 id="hub-faq-title">Field FAQ.</h2>
+            <p>
+              Need support or want to request a calculator? Email
+              <a href="mailto:support@civilcalcpro.com"
+                >support@civilcalcpro.com</a
+              >.
+            </p>
+          </div>
+
+          <div class="faq">
+            <details>
+              <summary>
+                Can I customize brick dimensions and mortar joint thickness?
+              </summary>
+              <p>
+                Yes. Whether your region uses modular bricks (190 × 90 × 90 mm),
+                traditional bricks (230 × 110 × 75 mm), US modular bricks, or
+                600 × 200 mm AAC blocks, you can set exact unit dimensions and
+                joint thickness.
+              </p>
+            </details>
+            <details>
+              <summary>
+                What formats can CivilCalc Pro export for client or procurement
+                sharing?
+              </summary>
+              <p>
+                CivilCalc Pro exports formatted PDF project &amp; BOQ reports
+                for clients/supervisors as well as structured CSV files that
+                open directly in Excel or Google Sheets.
+              </p>
+            </details>
+            <details>
+              <summary>Does project data stay private on my phone?</summary>
+              <p>
+                Yes. Saved projects, rates, and BOQs are stored locally on your
+                device by default, with optional user-controlled backup to your
+                own Google Drive.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="hub-section" aria-label="Related calculator categories">
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">MORE IN CIVILCALC PRO</p>
+            <h2>Explore related calculator suites.</h2>
+          </div>
+          <div class="hub-nav-strip">
+            <a class="hub-nav-card" href="/calculators/">
+              <small>COMPLETE DIRECTORY · 320+ OFFLINE TOOLS</small>
+              <strong>All Calculators ↗</strong>
+            </a>
+            <a class="hub-nav-card" href="/concrete-calculators/">
+              <small>CONCRETE &amp; STAIRCASES · 60+ FIELD CALCULATORS</small>
+              <strong>Concrete Calculators ↗</strong>
+            </a>
+            <a class="hub-nav-card" href="/rcc-steel-calculators/">
+              <small>REINFORCEMENT &amp; STRUCTURAL STEEL · 55+ TOOLS</small>
+              <strong>Steel &amp; RCC Calculators ↗</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="hub-cta-title">
+        <div class="container cta-grid">
+          <div class="cta-marker" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="cta-copy">
+            <p class="coordinate coordinate--light">
+              RUN ALL 320+ TOOLS ON SITE
+            </p>
+            <h2 id="hub-cta-title">
+              Get CivilCalc Pro
+              <em>on your phone.</em>
+            </h2>
+          </div>
+          <div class="cta-action">
+            <p>
+              Free to install on Android. Works offline with no mandatory
+              account.
+            </p>
+            <a
+              class="store-button store-button--light"
+              href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+              rel="noopener noreferrer"
+              aria-label="Get CivilCalc Pro on Google Play"
+            >
+              <span class="play-mark" aria-hidden="true"></span>
+              <span>
+                <small>Download on</small>
+                <strong>Google Play</strong>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid footer-grid--four">
+        <div class="footer-card footer-card--brand">
+          <div class="footer-brand">
+            <span class="brand-mark">
+              <img
+                src="/public/images/adaptive-icon.png"
+                width="128"
+                height="128"
+                alt="CivilCalc Pro"
+              />
+            </span>
+            <span>CivilCalc Pro</span>
+          </div>
+          <p>
+            Offline-first Android toolkit for civil engineering calculators,
+            construction estimates, RCC &amp; steel take-offs, project BOQs, and
+            PDF/CSV reports.
+          </p>
+        </div>
+        <div class="footer-card">
+          <h2>Calculator hubs</h2>
+          <ul class="list-tight">
+            <li><a href="/calculators/">All 320+ Calculators</a></li>
+            <li>
+              <a href="/concrete-calculators/">Concrete &amp; Staircases</a>
+            </li>
+            <li><a href="/rcc-steel-calculators/">Steel, RCC &amp; BBS</a></li>
+            <li>
+              <a href="/quantity-boq-calculators/"
+                >Quantity, Masonry &amp; BOQ</a
+              >
+            </li>
+            <li><a href="/electrical-calculators/">Electrical &amp; MEP</a></li>
+            <li>
+              <a href="/area-volume-conversion/">Area, Volume &amp; Units</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-card">
+          <h2>App &amp; workflow</h2>
+          <ul class="list-tight">
+            <li><a href="/">CivilCalc Pro Home</a></li>
+            <li><a href="/#workflow">Project &amp; BOQ Workflow</a></li>
+            <li><a href="/#calculators">Discipline Breakdown</a></li>
+            <li>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                rel="noopener noreferrer"
+                >Download on Google Play</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-card">
+          <h2>Legal &amp; support</h2>
+          <ul class="list-tight">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="mailto:support@civilcalcpro.com">Email support</a></li>
+            <li><a href="/app-ads.txt">app-ads.txt</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>&copy; <span id="year">2026</span> CivilCalc Pro · Lee Studios.</p>
+        <p class="footer-note">Designed for the field. Built with care.</p>
+        <div class="meta-links">
+          <a href="/">Home</a>
+          <a href="/calculators/">Calculators</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var el = document.getElementById("year");
+        if (el) el.textContent = new Date().getFullYear();
+
+        function apply(theme) {
+          document.documentElement.dataset.theme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta)
+            meta.setAttribute(
+              "content",
+              theme === "light" ? "#f1efe7" : "#0a100d",
+            );
+          document
+            .querySelectorAll("[data-theme-toggle]")
+            .forEach(function (b) {
+              b.setAttribute(
+                "aria-label",
+                theme === "light"
+                  ? "Switch to dark theme"
+                  : "Switch to light theme",
+              );
+            });
+          try {
+            localStorage.setItem("ccp_theme", theme);
+          } catch (_) {}
+        }
+
+        document.addEventListener("click", function (e) {
+          var btn = e.target.closest("[data-theme-toggle]");
+          if (!btn) return;
+          apply(
+            document.documentElement.dataset.theme === "dark"
+              ? "light"
+              : "dark",
+          );
+        });
+
+        apply(document.documentElement.dataset.theme || "light");
+      })();
+    </script>
+
+    <script
+      defer
+      src="https://portalstage.catchpoint.com/jp/203816/latest/InitialLoadScript.js"
+    ></script>
+  </body>
+</html>

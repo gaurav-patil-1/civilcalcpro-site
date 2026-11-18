@@ -1,12 +1,14 @@
 {
   "name": "CivilCalc Pro",
   "short_name": "CivilCalc Pro",
-  "description": "Official CivilCalc Pro website with support, privacy policy, and terms.",
+  "description": "CivilCalc Pro - offline-first Android app with 320+ civil engineering calculators, RCC & steel weight tools, construction material take-offs, electrical sizing, project BOQs, and PDF/CSV reports.",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#09090b",
-  "theme_color": "#09090b",
+  "background_color": "#08130f",
+  "theme_color": "#08130f",
+  "categories": ["productivity", "utilities", "business", "education"],
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

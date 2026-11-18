@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        var root = document.documentElement;
+        try {
+          var saved = localStorage.getItem("ccp_theme");
+          if (saved !== "light" && saved !== "dark") {
+            saved = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          root.dataset.theme = saved;
+        } catch (_) {
+          root.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>
+      Electrical Calculator App - Cable Sizing, Voltage Drop, MCB/MCCB, RCD
+      &amp; Motor FLC | CivilCalc Pro
+    </title>
+    <meta
+      name="description"
+      content="32+ offline electrical and MEP calculators in CivilCalc Pro: 1-phase &amp; 3-phase cable sizing, voltage drop, MCB/MCCB breaker sizing, RCD/RCCB selection, fault level, busbars, motor FLC, and kVAr power factor correction."
+    />
+    <meta
+      name="robots"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#f1efe7" />
+    <meta name="application-name" content="CivilCalc Pro" />
+    <meta name="apple-mobile-web-app-title" content="CivilCalc Pro" />
+    <meta name="author" content="Lee Studios" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="canonical"
+      href="https://civilcalcpro.com/electrical-calculators/"
+    />
+
+    <meta property="og:site_name" content="CivilCalc Pro" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Electrical Calculator App - Cable Sizing, Voltage Drop, MCB/MCCB, RCD &amp; Motor FLC | CivilCalc Pro"
+    />
+    <meta
+      property="og:description"
+      content="32+ offline electrical and MEP calculators in CivilCalc Pro: 1-phase &amp; 3-phase cable sizing, voltage drop, MCB/MCCB breaker sizing, RCD/RCCB selection, fault level, busbars, motor FLC, and kVAr power factor correction."
+    />
+    <meta
+      property="og:url"
+      content="https://civilcalcpro.com/electrical-calculators/"
+    />
+    <meta
+      property="og:image"
+      content="https://civilcalcpro.com/og-banner.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="CivilCalc Pro - Electrical Calculators"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Electrical Calculator App - Cable Sizing, Voltage Drop, MCB/MCCB, RCD &amp; Motor FLC | CivilCalc Pro"
+    />
+    <meta
+      name="twitter:description"
+      content="32+ offline electrical and MEP calculators in CivilCalc Pro: 1-phase &amp; 3-phase cable sizing, voltage drop, MCB/MCCB breaker sizing, RCD/RCCB selection, fault level, busbars, motor FLC, and kVAr power factor correction."
+    />
+    <meta
+      name="twitter:image"
+      content="https://civilcalcpro.com/og-banner.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=DM+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap"
+    />
+    <link rel="stylesheet" href="/assets/styles.css?v=seo-20261118" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "CivilCalc Pro",
+            "item": "https://civilcalcpro.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://civilcalcpro.com/calculators/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Electrical Calculators",
+            "item": "https://civilcalcpro.com/electrical-calculators/"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Construction & Building Electrical Calculators",
+        "description": "32+ offline electrical and MEP calculators in CivilCalc Pro: 1-phase & 3-phase cable sizing, voltage drop, MCB/MCCB breaker sizing, RCD/RCCB selection, fault level, busbars, motor FLC, and kVAr power factor correction.",
+        "url": "https://civilcalcpro.com/electrical-calculators/",
+        "numberOfItems": 9,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Single-Phase & Three-Phase Cable Sizing",
+            "description": "Select copper or aluminium conductor cross-section (mm² / AWG) accounting for load kW/kVA/Amps, power factor, ambient temperature, grouping, and installation method."
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Voltage Drop & Maximum Cable Run Length",
+            "description": "Compute exact resistive and reactive (R·cosφ + X·sinφ) voltage drop in Volts and %, and verify compliance against lighting (3%) and power (5%) limits."
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Conduit Fill, Cable Tray & Trunking Sizing",
+            "description": "Calculate total cable outer-diameter area and select PVC/GI conduit or tray dimensions within allowable space-factor fill percentages."
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "MCB, MCCB & ACB Breaker Sizing (Ib ≤ In ≤ Iz)",
+            "description": "Match design current, standard breaker trip ratings, B/C/D trip curves, and cable ampacity coordination (`Ib ≤ In ≤ Iz`) for distribution boards and feeders."
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "RCD / RCCB Selection & Discrimination Check",
+            "description": "Choose residual current sensitivity (30 mA, 100 mA, 300 mA), AC/A/F/B type, S-type time-delayed upstream selectivity, and upstream-downstream breaker discrimination."
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Short-Circuit Fault Level (Isc) & Busbar Sizing",
+            "description": "Estimate prospective 3-phase and earth-fault kA from transformer kVA/%Z and feeder impedance, and size copper/aluminium panel busbars for continuous & thermal fault ratings."
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Motor Full-Load Current (FLC), Branch Circuit & Overload",
+            "description": "Compute kW/HP motor FLC, DOL vs Star-Delta starter currents, overload relay range, fuse/breaker sizing, and pump/fan shaft & motor power."
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Power Factor Correction (PFC) Capacitor Bank Sizing",
+            "description": "Calculate required reactive power (kVAr), capacitor current, detuned reactor options, and kVA demand reduction to lift lagging cosφ to target (e.g. 0.95–0.99)."
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "Indoor Lumen Lighting, Load Schedule & Backup Sizing",
+            "description": "Room lux/lumen fixture count, diversity load estimation, kVA-kW-Amps conversions, earthing checks, and inverter/generator backup sizing."
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does CivilCalc Pro check both ampacity and voltage drop when sizing cables?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Cable sizing tools evaluate derated current-carrying capacity alongside voltage drop limits so long site feeders are not undersized."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are protection coordination checks like Ib ≤ In ≤ Iz included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The Breaker Sizing, RCD/RCCB Selection, Discrimination Check, and Fault Level calculators verify load current, protective device rating, cable thermal withstand, and breaking capacity (Icu/Ics) together."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="/" aria-label="CivilCalc Pro home">
+          <span class="brand-mark">
+            <img
+              src="/public/images/adaptive-icon.png"
+              width="128"
+              height="128"
+              alt="CivilCalc Pro"
+            />
+          </span>
+          <span class="brand-name">CivilCalc Pro</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="/calculators/">Calculators</a>
+          <a href="/concrete-calculators/">Concrete</a>
+          <a href="/rcc-steel-calculators/">Steel &amp; RCC</a>
+          <a href="/quantity-boq-calculators/">BOQ &amp; Quantity</a>
+          <a class="active" href="/electrical-calculators/">Electrical</a>
+          <a href="/area-volume-conversion/">Area &amp; Units</a>
+        </nav>
+
+        <div class="nav-right">
+          <a
+            class="header-cta"
+            href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+            rel="noopener noreferrer"
+          >
+            Get the app <span aria-hidden="true">↗</span>
+          </a>
+          <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+            aria-label="Switch to dark theme"
+            title="Toggle color theme"
+          >
+            <span class="theme-symbol" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hub-hero">
+        <div class="container">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="/">CivilCalc Pro</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href="/calculators/">Calculators</a></li>
+              <li aria-hidden="true">/</li>
+              <li>Electrical Calculators</li>
+            </ol>
+          </nav>
+
+          <div class="hub-hero-inner">
+            <div>
+              <p class="coordinate">
+                SITE &amp; BUILDING ELECTRICAL · 32+ MEP TOOLS
+              </p>
+              <h1>
+                Construction &amp; Building Electrical Calculators
+                <em>Cable sizing, voltage drop, breakers &amp; motors.</em>
+              </h1>
+              <p class="lead">
+                Civil engineers, MEP coordinators, and site electricians get a
+                complete electrical design &amp; verification suite inside the
+                same offline app-covering wiring, protection switchgear, motors,
+                power factor, conduits, and site lighting.
+              </p>
+              <div class="hero-actions" style="margin-top: 2rem">
+                <a
+                  class="store-button"
+                  href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                  rel="noopener noreferrer"
+                  aria-label="Get CivilCalc Pro on Google Play"
+                >
+                  <span class="play-mark" aria-hidden="true"></span>
+                  <span>
+                    <small>Download on</small>
+                    <strong>Google Play</strong>
+                  </span>
+                </a>
+                <a class="button-secondary" href="/">
+                  Back to CivilCalc Pro Overview
+                </a>
+              </div>
+            </div>
+
+            <aside class="hub-aside" aria-label="Field capability summary">
+              <h2>Built for MEP &amp; Site Engineers</h2>
+              <p>
+                Supports copper and aluminium conductors, single-phase and
+                three-phase AC/DC systems, installation derating factors,
+                IEC/standard breaker &amp; cable tables, and clear single-line
+                diagrams.
+              </p>
+              <ul class="chip-row">
+                <li class="chip">Offline Android App</li>
+                <li class="chip">mm · m · ft · ft/in</li>
+                <li class="chip">PDF &amp; CSV BOQ</li>
+                <li class="chip">25 Languages</li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="hub-section"
+        id="cables-voltage-drop"
+        aria-labelledby="cables-voltage-drop-title"
+      >
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">CIRCUITS, CABLES &amp; CONDUITS</p>
+            <h2 id="cables-voltage-drop-title">
+              Cable sizing, voltage drop &amp; conduit calculators.
+            </h2>
+            <p>
+              Size feeders and sub-circuits accurately for both current-carrying
+              capacity (ampacity) and permissible voltage drop limits.
+            </p>
+          </div>
+
+          <div class="calc-grid">
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">CBL / 01</span>
+                <h3>Single-Phase &amp; Three-Phase Cable Sizing</h3>
+                <p>
+                  Select copper or aluminium conductor cross-section (mm² / AWG)
+                  accounting for load kW/kVA/Amps, power factor, ambient
+                  temperature, grouping, and installation method.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Cu &amp; Al Conductors</li>
+                <li class="chip">Derating Factors</li>
+                <li class="chip">1Ø &amp; 3Ø Feeders</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">VDP / 02</span>
+                <h3>Voltage Drop &amp; Maximum Cable Run Length</h3>
+                <p>
+                  Compute exact resistive and reactive (R·cosφ + X·sinφ) voltage
+                  drop in Volts and %, and verify compliance against lighting
+                  (3%) and power (5%) limits.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">% Voltage Drop</li>
+                <li class="chip">R &amp; X Impedance</li>
+                <li class="chip">Max Feeder Length</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">CND / 03</span>
+                <h3>Conduit Fill, Cable Tray &amp; Trunking Sizing</h3>
+                <p>
+                  Calculate total cable outer-diameter area and select PVC/GI
+                  conduit or tray dimensions within allowable space-factor fill
+                  percentages.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Conduit Fill %</li>
+                <li class="chip">Cable Tray Width</li>
+                <li class="chip">Multi-Cable Runs</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="hub-section"
+        id="protection-switchgear"
+        aria-labelledby="protection-switchgear-title"
+      >
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">PROTECTION, SWITCHGEAR &amp; MOTORS</p>
+            <h2 id="protection-switchgear-title">
+              Breakers, RCDs, fault level, motors &amp; kVAr.
+            </h2>
+            <p>
+              Coordinate protective devices, panel busbars, motor branch
+              circuits, and capacitor banks directly on site.
+            </p>
+          </div>
+
+          <div class="calc-grid">
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">BRK / 04</span>
+                <h3>MCB, MCCB &amp; ACB Breaker Sizing (Ib ≤ In ≤ Iz)</h3>
+                <p>
+                  Match design current, standard breaker trip ratings, B/C/D
+                  trip curves, and cable ampacity coordination (`Ib ≤ In ≤ Iz`)
+                  for distribution boards and feeders.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Ib ≤ In ≤ Iz Check</li>
+                <li class="chip">B / C / D Curves</li>
+                <li class="chip">MCB · MCCB · ACB</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">RCD / 05</span>
+                <h3>RCD / RCCB Selection &amp; Discrimination Check</h3>
+                <p>
+                  Choose residual current sensitivity (30 mA, 100 mA, 300 mA),
+                  AC/A/F/B type, S-type time-delayed upstream selectivity, and
+                  upstream-downstream breaker discrimination.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">30–300 mA RCCB</li>
+                <li class="chip">Type AC / A / F / B</li>
+                <li class="chip">Selectivity Check</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">FLT / 06</span>
+                <h3>Short-Circuit Fault Level (Isc) &amp; Busbar Sizing</h3>
+                <p>
+                  Estimate prospective 3-phase and earth-fault kA from
+                  transformer kVA/%Z and feeder impedance, and size
+                  copper/aluminium panel busbars for continuous &amp; thermal
+                  fault ratings.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Prospective Isc (kA)</li>
+                <li class="chip">Adiabatic k²S²</li>
+                <li class="chip">Cu / Al Busbar</li>
+              </ul>
+            </article>
+            <article class="calc-card" id="motors-pfc">
+              <div>
+                <span class="calc-card-code">MTR / 07</span>
+                <h3>
+                  Motor Full-Load Current (FLC), Branch Circuit &amp; Overload
+                </h3>
+                <p>
+                  Compute kW/HP motor FLC, DOL vs Star-Delta starter currents,
+                  overload relay range, fuse/breaker sizing, and pump/fan shaft
+                  &amp; motor power.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Motor FLC (kW / HP)</li>
+                <li class="chip">Overload &amp; Fuse</li>
+                <li class="chip">Pump &amp; Fan Power</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">PFC / 08</span>
+                <h3>Power Factor Correction (PFC) Capacitor Bank Sizing</h3>
+                <p>
+                  Calculate required reactive power (kVAr), capacitor current,
+                  detuned reactor options, and kVA demand reduction to lift
+                  lagging cosφ to target (e.g. 0.95–0.99).
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Required kVAr</li>
+                <li class="chip">cosφ Improvement</li>
+                <li class="chip">kVA Demand Saving</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">LGT / 09</span>
+                <h3>
+                  Indoor Lumen Lighting, Load Schedule &amp; Backup Sizing
+                </h3>
+                <p>
+                  Room lux/lumen fixture count, diversity load estimation,
+                  kVA-kW-Amps conversions, earthing checks, and
+                  inverter/generator backup sizing.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Lumen Method Lux</li>
+                <li class="chip">kW ↔ kVA ↔ Amps</li>
+                <li class="chip">DG &amp; UPS Backup</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section section" aria-labelledby="hub-faq-title">
+        <div class="container faq-grid">
+          <div class="faq-heading">
+            <p class="coordinate">COMMON QUESTIONS</p>
+            <h2 id="hub-faq-title">Field FAQ.</h2>
+            <p>
+              Need support or want to request a calculator? Email
+              <a href="mailto:support@civilcalcpro.com"
+                >support@civilcalcpro.com</a
+              >.
+            </p>
+          </div>
+
+          <div class="faq">
+            <details>
+              <summary>
+                Does CivilCalc Pro check both ampacity and voltage drop when
+                sizing cables?
+              </summary>
+              <p>
+                Yes. Cable sizing tools evaluate derated current-carrying
+                capacity alongside voltage drop limits so long site feeders are
+                not undersized.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Are protection coordination checks like Ib ≤ In ≤ Iz included?
+              </summary>
+              <p>
+                Yes. The Breaker Sizing, RCD/RCCB Selection, Discrimination
+                Check, and Fault Level calculators verify load current,
+                protective device rating, cable thermal withstand, and breaking
+                capacity (Icu/Ics) together.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="hub-section" aria-label="Related calculator categories">
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">MORE IN CIVILCALC PRO</p>
+            <h2>Explore related calculator suites.</h2>
+          </div>
+          <div class="hub-nav-strip">
+            <a class="hub-nav-card" href="/calculators/">
+              <small>COMPLETE DIRECTORY · 320+ OFFLINE TOOLS</small>
+              <strong>All Calculators ↗</strong>
+            </a>
+            <a class="hub-nav-card" href="/concrete-calculators/">
+              <small>CONCRETE &amp; STAIRCASES · 60+ FIELD CALCULATORS</small>
+              <strong>Concrete Calculators ↗</strong>
+            </a>
+            <a class="hub-nav-card" href="/rcc-steel-calculators/">
+              <small>REINFORCEMENT &amp; STRUCTURAL STEEL · 55+ TOOLS</small>
+              <strong>Steel &amp; RCC Calculators ↗</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="hub-cta-title">
+        <div class="container cta-grid">
+          <div class="cta-marker" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="cta-copy">
+            <p class="coordinate coordinate--light">
+              RUN ALL 320+ TOOLS ON SITE
+            </p>
+            <h2 id="hub-cta-title">
+              Get CivilCalc Pro
+              <em>on your phone.</em>
+            </h2>
+          </div>
+          <div class="cta-action">
+            <p>
+              Free to install on Android. Works offline with no mandatory
+              account.
+            </p>
+            <a
+              class="store-button store-button--light"
+              href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+              rel="noopener noreferrer"
+              aria-label="Get CivilCalc Pro on Google Play"
+            >
+              <span class="play-mark" aria-hidden="true"></span>
+              <span>
+                <small>Download on</small>
+                <strong>Google Play</strong>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid footer-grid--four">
+        <div class="footer-card footer-card--brand">
+          <div class="footer-brand">
+            <span class="brand-mark">
+              <img
+                src="/public/images/adaptive-icon.png"
+                width="128"
+                height="128"
+                alt="CivilCalc Pro"
+              />
+            </span>
+            <span>CivilCalc Pro</span>
+          </div>
+          <p>
+            Offline-first Android toolkit for civil engineering calculators,
+            construction estimates, RCC &amp; steel take-offs, project BOQs, and
+            PDF/CSV reports.
+          </p>
+        </div>
+        <div class="footer-card">
+          <h2>Calculator hubs</h2>
+          <ul class="list-tight">
+            <li><a href="/calculators/">All 320+ Calculators</a></li>
+            <li>
+              <a href="/concrete-calculators/">Concrete &amp; Staircases</a>
+            </li>
+            <li><a href="/rcc-steel-calculators/">Steel, RCC &amp; BBS</a></li>
+            <li>
+              <a href="/quantity-boq-calculators/"
+                >Quantity, Masonry &amp; BOQ</a
+              >
+            </li>
+            <li><a href="/electrical-calculators/">Electrical &amp; MEP</a></li>
+            <li>
+              <a href="/area-volume-conversion/">Area, Volume &amp; Units</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-card">
+          <h2>App &amp; workflow</h2>
+          <ul class="list-tight">
+            <li><a href="/">CivilCalc Pro Home</a></li>
+            <li><a href="/#workflow">Project &amp; BOQ Workflow</a></li>
+            <li><a href="/#calculators">Discipline Breakdown</a></li>
+            <li>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                rel="noopener noreferrer"
+                >Download on Google Play</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-card">
+          <h2>Legal &amp; support</h2>
+          <ul class="list-tight">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="mailto:support@civilcalcpro.com">Email support</a></li>
+            <li><a href="/app-ads.txt">app-ads.txt</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>&copy; <span id="year">2026</span> CivilCalc Pro · Lee Studios.</p>
+        <p class="footer-note">Designed for the field. Built with care.</p>
+        <div class="meta-links">
+          <a href="/">Home</a>
+          <a href="/calculators/">Calculators</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var el = document.getElementById("year");
+        if (el) el.textContent = new Date().getFullYear();
+
+        function apply(theme) {
+          document.documentElement.dataset.theme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta)
+            meta.setAttribute(
+              "content",
+              theme === "light" ? "#f1efe7" : "#0a100d",
+            );
+          document
+            .querySelectorAll("[data-theme-toggle]")
+            .forEach(function (b) {
+              b.setAttribute(
+                "aria-label",
+                theme === "light"
+                  ? "Switch to dark theme"
+                  : "Switch to light theme",
+              );
+            });
+          try {
+            localStorage.setItem("ccp_theme", theme);
+          } catch (_) {}
+        }
+
+        document.addEventListener("click", function (e) {
+          var btn = e.target.closest("[data-theme-toggle]");
+          if (!btn) return;
+          apply(
+            document.documentElement.dataset.theme === "dark"
+              ? "light"
+              : "dark",
+          );
+        });
+
+        apply(document.documentElement.dataset.theme || "light");
+      })();
+    </script>
+
+    <script
+      defer
+      src="https://portalstage.catchpoint.com/jp/203816/latest/InitialLoadScript.js"
+    ></script>
+  </body>
+</html>

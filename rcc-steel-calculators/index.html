@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        var root = document.documentElement;
+        try {
+          var saved = localStorage.getItem("ccp_theme");
+          if (saved !== "light" && saved !== "dark") {
+            saved = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          root.dataset.theme = saved;
+        } catch (_) {
+          root.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>
+      Steel Weight Calculator (D²/162), Bar Bending Schedule (BBS) &amp; RCC
+      Steel | CivilCalc Pro
+    </title>
+    <meta
+      name="description"
+      content="Calculate rebar weight (D²/162), slab/beam/column/footing reinforcement, stirrup &amp; ring cutting length, spiral steel, lap &amp; development length, cover blocks, and structural metal weights in CivilCalc Pro."
+    />
+    <meta
+      name="robots"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#f1efe7" />
+    <meta name="application-name" content="CivilCalc Pro" />
+    <meta name="apple-mobile-web-app-title" content="CivilCalc Pro" />
+    <meta name="author" content="Lee Studios" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="canonical"
+      href="https://civilcalcpro.com/rcc-steel-calculators/"
+    />
+
+    <meta property="og:site_name" content="CivilCalc Pro" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Steel Weight Calculator (D²/162), Bar Bending Schedule (BBS) &amp; RCC Steel | CivilCalc Pro"
+    />
+    <meta
+      property="og:description"
+      content="Calculate rebar weight (D²/162), slab/beam/column/footing reinforcement, stirrup &amp; ring cutting length, spiral steel, lap &amp; development length, cover blocks, and structural metal weights in CivilCalc Pro."
+    />
+    <meta
+      property="og:url"
+      content="https://civilcalcpro.com/rcc-steel-calculators/"
+    />
+    <meta
+      property="og:image"
+      content="https://civilcalcpro.com/og-banner.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="CivilCalc Pro - Steel &amp; RCC Calculators"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Steel Weight Calculator (D²/162), Bar Bending Schedule (BBS) &amp; RCC Steel | CivilCalc Pro"
+    />
+    <meta
+      name="twitter:description"
+      content="Calculate rebar weight (D²/162), slab/beam/column/footing reinforcement, stirrup &amp; ring cutting length, spiral steel, lap &amp; development length, cover blocks, and structural metal weights in CivilCalc Pro."
+    />
+    <meta
+      name="twitter:image"
+      content="https://civilcalcpro.com/og-banner.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=DM+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap"
+    />
+    <link rel="stylesheet" href="/assets/styles.css?v=seo-20261118" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "CivilCalc Pro",
+            "item": "https://civilcalcpro.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://civilcalcpro.com/calculators/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Steel & RCC Calculators",
+            "item": "https://civilcalcpro.com/rcc-steel-calculators/"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Steel Weight, RCC & Bar Bending (BBS) Calculators",
+        "description": "Calculate rebar weight (D²/162), slab/beam/column/footing reinforcement, stirrup & ring cutting length, spiral steel, lap & development length, cover blocks, and structural metal weights in CivilCalc Pro.",
+        "url": "https://civilcalcpro.com/rcc-steel-calculators/",
+        "numberOfItems": 9,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "One-Way, Two-Way & Diagram-Specific Slab Steel",
+            "description": "Main bars, distribution steel, cranked/bent-up bars, top extra support bars, chair bars, and spacing-to-count schedules with wastage and rate costing."
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Column Vertical Bars & Multi-Tie Configurations",
+            "description": "4-bar to 14+ bar rectangular and circular column reinforcement take-offs with starter/lap allowances, master rings, inner diamond/cross ties, and spiral links."
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Beam Main Steel, Extra Bars & Stirrup Zones",
+            "description": "Bottom tension bars, top anchor bars, curtailment/extra support bars, side-face bars, and multi-zone shear stirrups across 10+ reference beam arrangements."
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Isolated & Combined Footing Mesh Reinforcement",
+            "description": "Bottom and double-mesh footing reinforcement along X and Y directions with L-bends, clear cover deductions, and diameter-wise weight summaries."
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "RCC Quick Structural & Safety Code Checks",
+            "description": "On-site sanity checks for slab thickness, beam/column steel ratios, minimum/maximum reinforcement percentages, and cover compliance."
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Rebar Unit Weight & Bundle Calculator (D²/162)",
+            "description": "Instant weight per metre, per foot, per bar, and per bundle for 6 mm, 8 mm, 10 mm, 12 mm, 16 mm, 20 mm, 25 mm, 32 mm, and custom bar diameters."
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Square, Rectangular, Circular & Helical Stirrups",
+            "description": "Exact cutting length with clear cover deduction, 90°/135° seismic hook lengths (10d / 12d), 45°/90°/135° bend deductions, and spiral pitch geometry."
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Lap Length, Development Length (Ld) & Cover Blocks",
+            "description": "Compute tension and compression lap/development lengths by concrete grade and steel yield strength (Fe415, Fe500, Fe550), plus spacer/cover-block counts."
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "Structural Steel & Metal Section Weight Calculators",
+            "description": "Weight and cost calculators for MS plates, round/square/hex bars, hollow pipes & RHS/SHS tubes, equal/unequal L-angles, C-channels, I/H beams, and T-sections."
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What formula does CivilCalc Pro use for steel bar weight?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For steel density 7850 kg/m³, cross-sectional area π·D²/4 gives unit weight D² / 162.28 kg/m (commonly written D²/162 where D is bar diameter in mm). You can also customize material density for stainless steel, aluminium, brass, or copper."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are hook lengths and bend deductions included in stirrup cutting length?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Column and beam ring calculators deduct concrete cover to the bar centreline/outer face, add configurable hook lengths, and apply 90° and 135° bend deductions so bar benders get accurate cut lengths."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I combine steel weights across multiple diameters in one project?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Saving slab, beam, column, and footing steel calculations into a CivilCalc Pro project aggregates total steel requirements alongside concrete and formwork in a unified BOQ."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="/" aria-label="CivilCalc Pro home">
+          <span class="brand-mark">
+            <img
+              src="/public/images/adaptive-icon.png"
+              width="128"
+              height="128"
+              alt="CivilCalc Pro"
+            />
+          </span>
+          <span class="brand-name">CivilCalc Pro</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="/calculators/">Calculators</a>
+          <a href="/concrete-calculators/">Concrete</a>
+          <a class="active" href="/rcc-steel-calculators/">Steel &amp; RCC</a>
+          <a href="/quantity-boq-calculators/">BOQ &amp; Quantity</a>
+          <a href="/electrical-calculators/">Electrical</a>
+          <a href="/area-volume-conversion/">Area &amp; Units</a>
+        </nav>
+
+        <div class="nav-right">
+          <a
+            class="header-cta"
+            href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+            rel="noopener noreferrer"
+          >
+            Get the app <span aria-hidden="true">↗</span>
+          </a>
+          <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+            aria-label="Switch to dark theme"
+            title="Toggle color theme"
+          >
+            <span class="theme-symbol" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hub-hero">
+        <div class="container">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="/">CivilCalc Pro</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href="/calculators/">Calculators</a></li>
+              <li aria-hidden="true">/</li>
+              <li>Steel &amp; RCC Calculators</li>
+            </ol>
+          </nav>
+
+          <div class="hub-hero-inner">
+            <div>
+              <p class="coordinate">
+                REINFORCEMENT &amp; STRUCTURAL STEEL · 55+ TOOLS
+              </p>
+              <h1>
+                Steel Weight, RCC &amp; Bar Bending (BBS) Calculators
+                <em>Rebar take-offs, stirrups, laps &amp; profiles.</em>
+              </h1>
+              <p class="lead">
+                Built for site engineers and bar benders: compute cutting
+                lengths, bend deductions, hook allowances, bar counts,
+                diameter-wise steel weights (kg &amp; tonnes), and structural
+                steel section weights with clear reinforcement diagrams.
+              </p>
+              <div class="hero-actions" style="margin-top: 2rem">
+                <a
+                  class="store-button"
+                  href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                  rel="noopener noreferrer"
+                  aria-label="Get CivilCalc Pro on Google Play"
+                >
+                  <span class="play-mark" aria-hidden="true"></span>
+                  <span>
+                    <small>Download on</small>
+                    <strong>Google Play</strong>
+                  </span>
+                </a>
+                <a class="button-secondary" href="/">
+                  Back to CivilCalc Pro Overview
+                </a>
+              </div>
+            </div>
+
+            <aside class="hub-aside" aria-label="Field capability summary">
+              <h2>Precision Rebar Detailing</h2>
+              <p>
+                Every reinforcement screen labels bar diameters, clear cover,
+                c/c spacing, hooks, cranks, and lap zones directly on an
+                engineering diagram so site measurements match structural
+                drawings.
+              </p>
+              <ul class="chip-row">
+                <li class="chip">Offline Android App</li>
+                <li class="chip">mm · m · ft · ft/in</li>
+                <li class="chip">PDF &amp; CSV BOQ</li>
+                <li class="chip">25 Languages</li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="hub-section"
+        id="reinforcement"
+        aria-labelledby="reinforcement-title"
+      >
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">MEMBER REINFORCEMENT TAKE-OFFS</p>
+            <h2 id="reinforcement-title">
+              Slab, beam, column &amp; footing steel calculators.
+            </h2>
+            <p>
+              Generate diameter-wise bar counts, cutting lengths, and total
+              steel weight for standard and advanced multi-layer RCC members.
+            </p>
+          </div>
+
+          <div class="calc-grid">
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">SLB / 01</span>
+                <h3>One-Way, Two-Way &amp; Diagram-Specific Slab Steel</h3>
+                <p>
+                  Main bars, distribution steel, cranked/bent-up bars, top extra
+                  support bars, chair bars, and spacing-to-count schedules with
+                  wastage and rate costing.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Main &amp; Distribution</li>
+                <li class="chip">Cranked Bars</li>
+                <li class="chip">Top Extra Steel</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">COL / 02</span>
+                <h3>Column Vertical Bars &amp; Multi-Tie Configurations</h3>
+                <p>
+                  4-bar to 14+ bar rectangular and circular column reinforcement
+                  take-offs with starter/lap allowances, master rings, inner
+                  diamond/cross ties, and spiral links.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Vertical Longitudinal</li>
+                <li class="chip">Master + Inner Ties</li>
+                <li class="chip">12+ Column Layouts</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">BEM / 03</span>
+                <h3>Beam Main Steel, Extra Bars &amp; Stirrup Zones</h3>
+                <p>
+                  Bottom tension bars, top anchor bars, curtailment/extra
+                  support bars, side-face bars, and multi-zone shear stirrups
+                  across 10+ reference beam arrangements.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Top &amp; Bottom Bars</li>
+                <li class="chip">Curtailment Steel</li>
+                <li class="chip">Shear Stirrups</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">FTG / 04</span>
+                <h3>Isolated &amp; Combined Footing Mesh Reinforcement</h3>
+                <p>
+                  Bottom and double-mesh footing reinforcement along X and Y
+                  directions with L-bends, clear cover deductions, and
+                  diameter-wise weight summaries.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Single &amp; Double Mesh</li>
+                <li class="chip">Cover Deduction</li>
+                <li class="chip">L-Bend Development</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">RCC / 05</span>
+                <h3>RCC Quick Structural &amp; Safety Code Checks</h3>
+                <p>
+                  On-site sanity checks for slab thickness, beam/column steel
+                  ratios, minimum/maximum reinforcement percentages, and cover
+                  compliance.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Min/Max Steel %</li>
+                <li class="chip">RCC Quick Checks</li>
+                <li class="chip">Code Sanity Check</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">WGT / 06</span>
+                <h3>Rebar Unit Weight &amp; Bundle Calculator (D²/162)</h3>
+                <p>
+                  Instant weight per metre, per foot, per bar, and per bundle
+                  for 6 mm, 8 mm, 10 mm, 12 mm, 16 mm, 20 mm, 25 mm, 32 mm, and
+                  custom bar diameters.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">D²/162.2 kg/m</li>
+                <li class="chip">6 mm – 40 mm Bars</li>
+                <li class="chip">Pieces ↔ Tonnes</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="hub-section"
+        id="stirrups-laps"
+        aria-labelledby="stirrups-laps-title"
+      >
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">CUTTING LENGTHS &amp; STRUCTURAL METAL</p>
+            <h2 id="stirrups-laps-title">
+              Stirrups, spirals, laps &amp; structural steel profiles.
+            </h2>
+            <p>
+              Eliminate manual cutting-length errors for rings, helices,
+              splices, and fabricated steel sections.
+            </p>
+          </div>
+
+          <div class="calc-grid">
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">RNG / 07</span>
+                <h3>Square, Rectangular, Circular &amp; Helical Stirrups</h3>
+                <p>
+                  Exact cutting length with clear cover deduction, 90°/135°
+                  seismic hook lengths (10d / 12d), 45°/90°/135° bend
+                  deductions, and spiral pitch geometry.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">135° Seismic Hooks</li>
+                <li class="chip">Bend Deductions</li>
+                <li class="chip">Helix / Pile Spiral</li>
+              </ul>
+            </article>
+            <article class="calc-card">
+              <div>
+                <span class="calc-card-code">LAP / 08</span>
+                <h3>Lap Length, Development Length (Ld) &amp; Cover Blocks</h3>
+                <p>
+                  Compute tension and compression lap/development lengths by
+                  concrete grade and steel yield strength (Fe415, Fe500, Fe550),
+                  plus spacer/cover-block counts.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">Tension &amp; Comp. Lap</li>
+                <li class="chip">Development Length Ld</li>
+                <li class="chip">Cover Block Count</li>
+              </ul>
+            </article>
+            <article class="calc-card" id="metal-weights">
+              <div>
+                <span class="calc-card-code">MTL / 09</span>
+                <h3>Structural Steel &amp; Metal Section Weight Calculators</h3>
+                <p>
+                  Weight and cost calculators for MS plates, round/square/hex
+                  bars, hollow pipes &amp; RHS/SHS tubes, equal/unequal
+                  L-angles, C-channels, I/H beams, and T-sections.
+                </p>
+              </div>
+              <ul class="chip-row">
+                <li class="chip">I-Beam &amp; Channel</li>
+                <li class="chip">RHS / SHS / Pipe</li>
+                <li class="chip">MS Plate &amp; Angle</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section section" aria-labelledby="hub-faq-title">
+        <div class="container faq-grid">
+          <div class="faq-heading">
+            <p class="coordinate">COMMON QUESTIONS</p>
+            <h2 id="hub-faq-title">Field FAQ.</h2>
+            <p>
+              Need support or want to request a calculator? Email
+              <a href="mailto:support@civilcalcpro.com"
+                >support@civilcalcpro.com</a
+              >.
+            </p>
+          </div>
+
+          <div class="faq">
+            <details>
+              <summary>
+                What formula does CivilCalc Pro use for steel bar weight?
+              </summary>
+              <p>
+                For steel density 7850 kg/m³, cross-sectional area π·D²/4 gives
+                unit weight D² / 162.28 kg/m (commonly written D²/162 where D is
+                bar diameter in mm). You can also customize material density for
+                stainless steel, aluminium, brass, or copper.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Are hook lengths and bend deductions included in stirrup cutting
+                length?
+              </summary>
+              <p>
+                Yes. Column and beam ring calculators deduct concrete cover to
+                the bar centreline/outer face, add configurable hook lengths,
+                and apply 90° and 135° bend deductions so bar benders get
+                accurate cut lengths.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Can I combine steel weights across multiple diameters in one
+                project?
+              </summary>
+              <p>
+                Yes. Saving slab, beam, column, and footing steel calculations
+                into a CivilCalc Pro project aggregates total steel requirements
+                alongside concrete and formwork in a unified BOQ.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="hub-section" aria-label="Related calculator categories">
+        <div class="container">
+          <div class="hub-section-head">
+            <p class="coordinate">MORE IN CIVILCALC PRO</p>
+            <h2>Explore related calculator suites.</h2>
+          </div>
+          <div class="hub-nav-strip">
+            <a class="hub-nav-card" href="/calculators/">
+              <small>COMPLETE DIRECTORY · 320+ OFFLINE TOOLS</small>
+              <strong>All Calculators ↗</strong>
+            </a>
+            <a class="hub-nav-card" href="/concrete-calculators/">
+              <small>CONCRETE &amp; STAIRCASES · 60+ FIELD CALCULATORS</small>
+              <strong>Concrete Calculators ↗</strong>
+            </a>
+            <a class="hub-nav-card" href="/quantity-boq-calculators/">
+              <small>QUANTITY SURVEYING &amp; BOQ · 145+ TOOLS</small>
+              <strong>Quantity, Masonry &amp; BOQ ↗</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="hub-cta-title">
+        <div class="container cta-grid">
+          <div class="cta-marker" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="cta-copy">
+            <p class="coordinate coordinate--light">
+              RUN ALL 320+ TOOLS ON SITE
+            </p>
+            <h2 id="hub-cta-title">
+              Get CivilCalc Pro
+              <em>on your phone.</em>
+            </h2>
+          </div>
+          <div class="cta-action">
+            <p>
+              Free to install on Android. Works offline with no mandatory
+              account.
+            </p>
+            <a
+              class="store-button store-button--light"
+              href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+              rel="noopener noreferrer"
+              aria-label="Get CivilCalc Pro on Google Play"
+            >
+              <span class="play-mark" aria-hidden="true"></span>
+              <span>
+                <small>Download on</small>
+                <strong>Google Play</strong>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid footer-grid--four">
+        <div class="footer-card footer-card--brand">
+          <div class="footer-brand">
+            <span class="brand-mark">
+              <img
+                src="/public/images/adaptive-icon.png"
+                width="128"
+                height="128"
+                alt="CivilCalc Pro"
+              />
+            </span>
+            <span>CivilCalc Pro</span>
+          </div>
+          <p>
+            Offline-first Android toolkit for civil engineering calculators,
+            construction estimates, RCC &amp; steel take-offs, project BOQs, and
+            PDF/CSV reports.
+          </p>
+        </div>
+        <div class="footer-card">
+          <h2>Calculator hubs</h2>
+          <ul class="list-tight">
+            <li><a href="/calculators/">All 320+ Calculators</a></li>
+            <li>
+              <a href="/concrete-calculators/">Concrete &amp; Staircases</a>
+            </li>
+            <li><a href="/rcc-steel-calculators/">Steel, RCC &amp; BBS</a></li>
+            <li>
+              <a href="/quantity-boq-calculators/"
+                >Quantity, Masonry &amp; BOQ</a
+              >
+            </li>
+            <li><a href="/electrical-calculators/">Electrical &amp; MEP</a></li>
+            <li>
+              <a href="/area-volume-conversion/">Area, Volume &amp; Units</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-card">
+          <h2>App &amp; workflow</h2>
+          <ul class="list-tight">
+            <li><a href="/">CivilCalc Pro Home</a></li>
+            <li><a href="/#workflow">Project &amp; BOQ Workflow</a></li>
+            <li><a href="/#calculators">Discipline Breakdown</a></li>
+            <li>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.leestudios.civilcalcpro"
+                rel="noopener noreferrer"
+                >Download on Google Play</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-card">
+          <h2>Legal &amp; support</h2>
+          <ul class="list-tight">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="mailto:support@civilcalcpro.com">Email support</a></li>
+            <li><a href="/app-ads.txt">app-ads.txt</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>&copy; <span id="year">2026</span> CivilCalc Pro · Lee Studios.</p>
+        <p class="footer-note">Designed for the field. Built with care.</p>
+        <div class="meta-links">
+          <a href="/">Home</a>
+          <a href="/calculators/">Calculators</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var el = document.getElementById("year");
+        if (el) el.textContent = new Date().getFullYear();
+
+        function apply(theme) {
+          document.documentElement.dataset.theme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta)
+            meta.setAttribute(
+              "content",
+              theme === "light" ? "#f1efe7" : "#0a100d",
+            );
+          document
+            .querySelectorAll("[data-theme-toggle]")
+            .forEach(function (b) {
+              b.setAttribute(
+                "aria-label",
+                theme === "light"
+                  ? "Switch to dark theme"
+                  : "Switch to light theme",
+              );
+            });
+          try {
+            localStorage.setItem("ccp_theme", theme);
+          } catch (_) {}
+        }
+
+        document.addEventListener("click", function (e) {
+          var btn = e.target.closest("[data-theme-toggle]");
+          if (!btn) return;
+          apply(
+            document.documentElement.dataset.theme === "dark"
+              ? "light"
+              : "dark",
+          );
+        });
+
+        apply(document.documentElement.dataset.theme || "light");
+      })();
+    </script>
+
+    <script
+      defer
+      src="https://portalstage.catchpoint.com/jp/203816/latest/InitialLoadScript.js"
+    ></script>
+  </body>
+</html>
